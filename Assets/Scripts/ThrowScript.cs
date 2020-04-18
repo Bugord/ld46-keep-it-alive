@@ -20,12 +20,12 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private HingeJoint2D _leftHandHingeJoint2D;
     [SerializeField] private HingeJoint2D _rightHandHingeJoint2D;
     [SerializeField] private HingeJoint2D _bodyHingeJoint2D;
-    
+
 
     [SerializeField] private float _flySpeed;
     [SerializeField] private float _flyMaxDistance;
 
-    
+
 
     private void Awake()
     {
@@ -61,8 +61,14 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     }
 
                     _bodyHingeJoint2D.enabled = false;
-                    //var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
-                    //bodyRigidbody2D.AddForce(new Vector2(1.5f, .25f) * 500f);
+
+
+                    var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
+
+                    var continueThrowDirection =
+                        _curvePoints[_curvePoints.Count - 1] - _curvePoints[_curvePoints.Count - 2];
+
+                    bodyRigidbody2D.AddForce(new Vector2(continueThrowDirection.x, .1f) * 100f, ForceMode2D.Impulse);
                 }
             }
         }
@@ -79,7 +85,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _isThrowPrepare = false;
         _lineRenderer.enabled = _isThrowPrepare;
-        
+
         Throw();
     }
 
@@ -110,10 +116,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public List<Vector2> GetCurvePoints(Vector2 start, Vector2 end, int anglesCount)
     {
         var curvePoints = new List<Vector2> { start };
-       
+
         for (var i = 1; i < anglesCount; i++)
         {
-            curvePoints.Add(Vector2.Lerp(start,end , i * 1.0f / anglesCount) + new Vector2(0, Mathf.Sin(Mathf.PI * (i * 1.0f / anglesCount))));
+            curvePoints.Add(Vector2.Lerp(start, end, i * 1.0f / anglesCount) + new Vector2(0, Mathf.Sin(Mathf.PI * (i * 1.0f / anglesCount))));
         }
 
         curvePoints.Add(end);
