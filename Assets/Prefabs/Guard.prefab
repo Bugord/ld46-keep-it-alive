@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226997599}
   - component: {fileID: 1226997600}
+  - component: {fileID: 3172182600462144188}
   m_Layer: 10
   m_Name: FallCollider
   m_TagString: Untagged
@@ -44,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.76}
+  m_Offset: {x: 0, y: -0.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,8 +56,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 0.04982865}
+  m_Size: {x: 1, y: 0.04982865}
   m_EdgeRadius: 0
+--- !u!114 &3172182600462144188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226997598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35744cc02737f314aa1dcd1c56ff622a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RagdollTransform: {fileID: 6590755715780256902}
 --- !u!1 &805411943189975593
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +308,7 @@ MonoBehaviour:
   _rightHandHingeJoint2D: {fileID: 6590755715787799826}
   _bodyHingeJoint2D: {fileID: 1569549642}
   _flySpeed: 0.08
-  _flyMaxDistance: 2
+  _flyMaxDistance: 10
 --- !u!114 &1784225397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,6 +1396,7 @@ GameObject:
   - component: {fileID: 6590755715473530452}
   - component: {fileID: 6590755715473530453}
   - component: {fileID: 3887063738895096931}
+  - component: {fileID: 919706609}
   m_Layer: 8
   m_Name: BodyBottom
   m_TagString: Untagged
@@ -1532,6 +1547,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fcda3f37da35f4ca300389ec4724fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &919706609
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590755715473530472}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 6590755715780256903}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: -0.22000003}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 1
+  m_AngleLimits:
+    m_LowerAngle: -3.4681914
+    m_UpperAngle: 7.356101
 --- !u!1 &6590755715780256901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1585,7 @@ GameObject:
   - component: {fileID: 6590755715780256897}
   - component: {fileID: 1569549642}
   - component: {fileID: 3341490771101878996}
+  - component: {fileID: 726278529}
   m_Layer: 8
   m_Name: BodyTop
   m_TagString: Untagged
@@ -1704,6 +1744,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fcda3f37da35f4ca300389ec4724fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!233 &726278529
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590755715780256901}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 6590755715473530474}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: -0.17}
+  m_ConnectedAnchor: {x: 0, y: 0.049999952}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 1
+  m_AngleLimits:
+    m_LowerAngle: -5.964548
+    m_UpperAngle: 6.895671
 --- !u!1 &6590755715781548184
 GameObject:
   m_ObjectHideFlags: 0
