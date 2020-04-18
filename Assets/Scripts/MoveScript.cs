@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-    private bool _isMoving;
+    public bool isMoving;
     private bool _isJumping;
     private Vector3 _targetPos;
     private Vector3 _trueCurrentPos;
@@ -16,12 +16,12 @@ public class MoveScript : MonoBehaviour
 
     void Start()
     {
-        MoveTo(new Vector2(5, 0));
+        //MoveTo(new Vector2(5, 0));
     }
 
     public void MoveTo(Vector2 targetPos)
     {
-        _isMoving = true;
+        isMoving = true;
         _isJumping = true;
         _targetPos = targetPos;
         _trueCurrentPos = transform.position;
@@ -30,7 +30,7 @@ public class MoveScript : MonoBehaviour
     private void Update()
     {
         transform.position = _trueCurrentPos;
-        if (_isMoving)
+        if (isMoving)
         {
             var directionVector = (_targetPos - transform.position).normalized;
             transform.Translate(directionVector * _moveSpeed);
@@ -47,12 +47,12 @@ public class MoveScript : MonoBehaviour
             transform.position += new Vector3(0, verticalOffset);
         }
 
-        if (_isMoving && Vector2.Distance(_trueCurrentPos, _targetPos) < 0.1f)
+        if (isMoving && Vector2.Distance(_trueCurrentPos, _targetPos) < 0.1f)
         {
-            _isMoving = false;
+            isMoving = false;
         }
 
-        if (!_isMoving && verticalOffset < 0.01f)
+        if (!isMoving && verticalOffset < 0.01f)
         {
             var currentSin = Mathf.Sin(_timer);
             var nextSin = Mathf.Sin(_timer + 0.01f);
