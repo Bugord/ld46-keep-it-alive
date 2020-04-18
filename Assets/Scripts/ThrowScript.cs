@@ -19,7 +19,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private List<Rigidbody2D> _partRigidbody2Ds;
     [SerializeField] private HingeJoint2D _leftHandHingeJoint2D;
     [SerializeField] private HingeJoint2D _rightHandHingeJoint2D;
-
+    [SerializeField] private HingeJoint2D _bodyHingeJoint2D;
+    
 
     [SerializeField] private float _flySpeed;
 
@@ -54,6 +55,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     {
                         partRigidbody2D.gravityScale = 1f;
                     }
+
+                    _bodyHingeJoint2D.enabled = false;
+                    //var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
+                    //bodyRigidbody2D.AddForce(new Vector2(1.5f, .25f) * 500f);
                 }
             }
         }
