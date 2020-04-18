@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - Guard
-  - 
-  - 
+  - DeadGuard
+  - DeadCollider
   - 
   - 
   - 
