@@ -18,8 +18,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Transform _ragdollTransform;
 
     [SerializeField] private List<Rigidbody2D> _partRigidbody2Ds;
-    [SerializeField] private HingeJoint2D _leftHandHingeJoint2D;
-    [SerializeField] private HingeJoint2D _rightHandHingeJoint2D;
+    [SerializeField] private Rigidbody2D _leftHandRigidbody2D;
+    [SerializeField] private Rigidbody2D _rightHandRigidbody2D;
     [SerializeField] private HingeJoint2D _bodyHingeJoint2D;
 
 
@@ -35,7 +35,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _lineRenderer = GetComponent<LineRenderer>();
         _partRigidbody2Ds = _ragdollTransform.GetComponentsInChildren<Rigidbody2D>().ToList();
         _gameManager = GameManager.Instance;
-    }
+    }      
 
     private void Update()
     {
@@ -102,6 +102,9 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //    min = -208f,
         //    max = -153f
         //};
+
+        _leftHandRigidbody2D.AddForce(Vector2.left * 25, ForceMode2D.Impulse);
+        _rightHandRigidbody2D.AddForce(Vector2.right * 25, ForceMode2D.Impulse);
     }
 
     public List<Vector2> GetCurvePoints(Vector2 start, Vector2 end, int anglesCount)
