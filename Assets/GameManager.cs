@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.LevelScripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnGuardJump()

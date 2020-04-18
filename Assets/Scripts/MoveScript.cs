@@ -13,17 +13,17 @@ public class MoveScript : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpFrequency;
     [SerializeField] private float _jumpAmplitude;
-
-    void Start()
-    {
-        //MoveTo(new Vector2(5, 0));
-    }
-
+        
     public void MoveTo(Vector2 targetPos)
     {
         isMoving = true;
         _isJumping = true;
         _targetPos = targetPos;
+        _trueCurrentPos = transform.position;
+    }
+
+    private void Start()
+    {
         _trueCurrentPos = transform.position;
     }
 

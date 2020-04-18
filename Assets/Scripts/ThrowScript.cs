@@ -91,17 +91,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         _gameManager.OnGuardJump();
 
-        //_leftHandHingeJoint2D.limits = new JointAngleLimits2D
-        //{
-        //    min = 157f,
-        //    max = 208f
-        //};
-
-        //_rightHandHingeJoint2D.limits = new JointAngleLimits2D
-        //{
-        //    min = -208f,
-        //    max = -153f
-        //};
+        GetComponent<MoveScript>().enabled = false;
 
         _leftHandRigidbody2D.AddForce(Vector2.left * 25, ForceMode2D.Impulse);
         _rightHandRigidbody2D.AddForce(Vector2.right * 25, ForceMode2D.Impulse);

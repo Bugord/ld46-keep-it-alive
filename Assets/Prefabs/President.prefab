@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3968299879260572354}
   - component: {fileID: 2672445332789696406}
+  - component: {fileID: 7436560741434134681}
+  - component: {fileID: 5128132889414449892}
   m_Layer: 0
   m_Name: Hinge
   m_TagString: Untagged
@@ -52,6 +54,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7436560741434134681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109688904698006742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98963ac8aea6f3b4e8485b969df1d86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  _moveSpeed: 0.003
+  _jumpFrequency: 15
+  _jumpAmplitude: 0.05
+--- !u!114 &5128132889414449892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109688904698006742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca7cd667c281f54e9952262a80cbdb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypoints: []
 --- !u!1 &1420683606656682376
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +252,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -392,7 +423,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -563,7 +594,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -1076,7 +1107,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -1198,8 +1229,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 50
+  m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1533,8 +1564,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 50
+  m_AngularDrag: 20
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
