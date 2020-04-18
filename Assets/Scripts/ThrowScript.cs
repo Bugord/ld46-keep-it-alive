@@ -8,10 +8,11 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private LineRenderer _lineRenderer;
     private bool _isThrowPrepare;
     private bool _wasThrown;
-    private Rigidbody2D _rigidbody2D;
 
     private List<Vector2> _curvePoints;
     private int _currentCurvePoint;
+
+    [SerializeField] private Transform _ragdollTransform;
 
     [SerializeField] private List<Rigidbody2D> _partRigidbody2Ds;
     [SerializeField] private HingeJoint2D _leftHandHingeJoint2D;
@@ -23,7 +24,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _partRigidbody2Ds = _ragdollTransform.GetComponentsInChildren<Rigidbody2D>().ToList();
     }
 
     private void Update()
