@@ -1710,7 +1710,7 @@ MonoBehaviour:
   Guards:
   - {fileID: 1964274301}
   _scrollbar: {fileID: 788085940}
-  TimeScale: 0.1
+  TimeScale: 0.8
   GuardsJumped: 0
 --- !u!4 &2001216088
 Transform:
