@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         GuardsJumped++;
         if (GuardsJumped == Guards.Count)
         {
-            TimeScale = .3f;
+            //TimeScale = .3f;
             ChangeUITimeScale();
         }
     }
