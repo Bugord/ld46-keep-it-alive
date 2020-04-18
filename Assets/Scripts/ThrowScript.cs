@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,6 +26,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private float _flySpeed;
     [SerializeField] private float _flyMaxDistance;
 
+    public bool IsDead;
+    public bool WasShoted;
 
 
     private void Awake()
@@ -54,21 +57,9 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     _wasThrown = false;
                     _currentCurvePoint = 0;
 
-                    foreach (var partRigidbody2D in _partRigidbody2Ds)
-                    {
-                        partRigidbody2D.gravityScale = 1f;
-                        partRigidbody2D.gameObject.layer = 9;
-                    }
 
-                    _bodyHingeJoint2D.enabled = false;
+                    Die();
 
-
-                    var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
-
-                    var continueThrowDirection =
-                        _curvePoints[_curvePoints.Count - 1] - _curvePoints[_curvePoints.Count - 2];
-
-                    bodyRigidbody2D.AddForce(new Vector2(continueThrowDirection.x, .1f) * 100f, ForceMode2D.Impulse);
                 }
             }
         }
@@ -134,8 +125,6 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         var flyVector = (Vector2)(mousePosition - transform.position);
 
-        Debug.Log(flyVector.magnitude);
-
         if (flyVector.magnitude > _flyMaxDistance)
         {
             flyVector = flyVector.normalized * _flyMaxDistance;
@@ -144,5 +133,37 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _curvePoints = GetCurvePoints(transform.position, (Vector2)transform.position + flyVector, pointCount);
         _lineRenderer.positionCount = pointCount + 1;
         _lineRenderer.SetPositions(_curvePoints.Select(vector2 => (Vector3)vector2).ToArray());
+    }
+
+    public void Shoted(Vector2 dir)
+    {
+        WasShoted = true;
+        var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
+
+        bodyRigidbody2D.AddForce(dir * 5f, ForceMode2D.Impulse);
+    }
+
+    private void Die()
+    {
+        IsDead = true;
+
+        foreach (var partRigidbody2D in _partRigidbody2Ds)
+        {
+            partRigidbody2D.gravityScale = 1f;
+            partRigidbody2D.gameObject.layer = 9;
+        }
+
+        _bodyHingeJoint2D.enabled = false;
+
+        if (!WasShoted)
+        {
+
+            var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
+
+            var continueThrowDirection =
+                _curvePoints[_curvePoints.Count - 1] - _curvePoints[_curvePoints.Count - 2];
+
+            bodyRigidbody2D.AddForce(new Vector2(continueThrowDirection.x, .1f) * 100f, ForceMode2D.Impulse);
+        }
     }
 }
