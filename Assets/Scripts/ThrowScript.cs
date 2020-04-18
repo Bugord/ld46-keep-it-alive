@@ -57,6 +57,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     foreach (var partRigidbody2D in _partRigidbody2Ds)
                     {
                         partRigidbody2D.gravityScale = 1f;
+                        partRigidbody2D.gameObject.layer = 9;
                     }
 
                     _bodyHingeJoint2D.enabled = false;
