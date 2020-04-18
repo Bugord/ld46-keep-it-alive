@@ -23,6 +23,9 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
 
     [SerializeField] private float _flySpeed;
+    [SerializeField] private float _flyMaxDistance;
+
+    
 
     private void Awake()
     {
@@ -121,7 +124,17 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         var pointCount = 10;
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        _curvePoints = GetCurvePoints(transform.position, mousePosition, pointCount);
+
+        var flyVector = (Vector2)(mousePosition - transform.position);
+
+        Debug.Log(flyVector.magnitude);
+
+        if (flyVector.magnitude > _flyMaxDistance)
+        {
+            flyVector = flyVector.normalized * _flyMaxDistance;
+        }
+
+        _curvePoints = GetCurvePoints(transform.position, (Vector2)transform.position + flyVector, pointCount);
         _lineRenderer.positionCount = pointCount + 1;
         _lineRenderer.SetPositions(_curvePoints.Select(vector2 => (Vector3)vector2).ToArray());
     }
