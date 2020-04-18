@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     public void OnTimeScaleChange()
     {
         TimeScale = _scrollbar.value;
-        Time.fixedDeltaTime = 0.02F * Time.timeScale;
     }
 
     public void ChangeUITimeScale()
