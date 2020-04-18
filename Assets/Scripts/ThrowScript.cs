@@ -13,6 +13,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private List<Vector2> _curvePoints;
     private int _currentCurvePoint;
 
+    [SerializeField] private List<Rigidbody2D> _partRigidbody2Ds;
+    [SerializeField] private HingeJoint2D _leftHandHingeJoint2D;
+    [SerializeField] private HingeJoint2D _rightHandHingeJoint2D;
+
 
     [SerializeField] private float _flySpeed;
 
@@ -41,6 +45,11 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 {
                     _wasThrown = false;
                     _currentCurvePoint = 0;
+
+                    foreach (var partRigidbody2D in _partRigidbody2Ds)
+                    {
+                        partRigidbody2D.gravityScale = 1f;
+                    }
                 }
             }
         }
@@ -64,6 +73,23 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Throw()
     {
         _wasThrown = true;
+
+        foreach (var partRigidbody2D in _partRigidbody2Ds)
+        {
+            partRigidbody2D.gravityScale = 0.05f;
+        }
+
+        //_leftHandHingeJoint2D.limits = new JointAngleLimits2D
+        //{
+        //    min = 157f,
+        //    max = 208f
+        //};
+
+        //_rightHandHingeJoint2D.limits = new JointAngleLimits2D
+        //{
+        //    min = -208f,
+        //    max = -153f
+        //};
     }
 
     public List<Vector2> GetCurvePoints(Vector2 start, Vector2 end, int anglesCount)
