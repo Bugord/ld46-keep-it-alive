@@ -46,7 +46,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (_wasThrown)
         {
-            var moveVector = (_curvePoints[_currentCurvePoint] - (Vector2)transform.position).normalized * _flySpeed * _gameManager.TimeScale;
+            var moveVector = (_curvePoints[_currentCurvePoint] - (Vector2)transform.position).normalized * _flySpeed;
             transform.Translate(moveVector);
 
             if (Vector2.Distance(transform.position, _curvePoints[_currentCurvePoint]) < 0.1f)

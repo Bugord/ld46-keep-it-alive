@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
         if (GuardsJumped == Guards.Count)
         {
             //TimeScale = .3f;
-            ChangeUITimeScale();
         }
     }
 
@@ -53,11 +52,5 @@ public class GameManager : MonoBehaviour
     {
         TimeScale = _scrollbar.value;
     }
-
-    public void ChangeUITimeScale()
-    {
-        _scrollbar.value = TimeScale;
-    }
-
     
 }

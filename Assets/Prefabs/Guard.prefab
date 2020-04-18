@@ -307,7 +307,7 @@ MonoBehaviour:
   _leftHandHingeJoint2D: {fileID: 6590755713897308036}
   _rightHandHingeJoint2D: {fileID: 6590755715787799826}
   _bodyHingeJoint2D: {fileID: 1569549642}
-  _flySpeed: 0.08
+  _flySpeed: 0.03
   _flyMaxDistance: 10
   IsDead: 0
   WasShoted: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98963ac8aea6f3b4e8485b969df1d86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.02
+  _moveSpeed: 0.001
   _jumpFrequency: 15
   _jumpAmplitude: 0.5
 --- !u!1 &6590755713897308056
