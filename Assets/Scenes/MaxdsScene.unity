@@ -350,7 +350,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479022308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1965,6 +1965,21 @@ PrefabInstance:
       propertyPath: _waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 481296448}
+    - target: {fileID: 8805288551286221505, guid: 438af9bb381e18749a8d205c7cabcfc4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578787103406955746, guid: 438af9bb381e18749a8d205c7cabcfc4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00001180172
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578787103406955746, guid: 438af9bb381e18749a8d205c7cabcfc4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000074505806
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438af9bb381e18749a8d205c7cabcfc4, type: 3}
 --- !u!1 &2004498300 stripped
