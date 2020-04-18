@@ -13,11 +13,15 @@ public class DestructionScript : MonoBehaviour
         joint = GetComponent<Joint2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet")) 
         {
             joint.enabled = false;
+            Destroy(collision.gameObject);
+
+            var dir = collision.GetComponent<BulletScript>()._direction;
+            transform.parent?.parent?.GetChild(1)?.GetComponent<ThrowScript>()?.Shoted(dir);
         }
     }
 }

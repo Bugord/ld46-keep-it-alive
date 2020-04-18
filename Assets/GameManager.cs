@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.LevelScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance => GameObject.Find("GameManager").GetComponent<GameManager>();
 
+    public LevelProcessor LevelProcessor;
+
     void Awake()
     {
         
@@ -24,10 +27,11 @@ public class GameManager : MonoBehaviour
 
     public void Shoot()
     {
-        foreach (var enemy in Enemies)
-        {
-            enemy.GetComponent<EnemyScript>().Shoot();
-        }
+        LevelProcessor.Launch();
+        //foreach (var enemy in Enemies)
+        //{
+        //    enemy.GetComponent<EnemyScript>().Shoot();
+        //}
     }
 
     public void Restart()
@@ -54,4 +58,6 @@ public class GameManager : MonoBehaviour
     {
         _scrollbar.value = TimeScale;
     }
+
+    
 }

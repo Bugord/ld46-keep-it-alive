@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
     public float Speed;
     private Rigidbody2D _rigidbody2D;
     private GameManager _gameManager;
-    private Vector2 _direction;
+    public Vector2 _direction;
 
 
     private void Awake()
