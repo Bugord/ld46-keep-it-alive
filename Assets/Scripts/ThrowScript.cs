@@ -12,6 +12,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private List<Vector2> _curvePoints;
     private int _currentCurvePoint;
 
+    private GameManager _gameManager;
+
     [SerializeField] private Transform _ragdollTransform;
 
     [SerializeField] private List<Rigidbody2D> _partRigidbody2Ds;
@@ -25,6 +27,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _partRigidbody2Ds = _ragdollTransform.GetComponentsInChildren<Rigidbody2D>().ToList();
+        _gameManager = GameManager.Instance;
     }
 
     private void Update()
@@ -36,7 +39,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (_wasThrown)
         {
-            var moveVector = (_curvePoints[_currentCurvePoint] - (Vector2)transform.position).normalized * _flySpeed;
+            var moveVector = (_curvePoints[_currentCurvePoint] - (Vector2)transform.position).normalized * _flySpeed * _gameManager.TimeScale;
             transform.Translate(moveVector);
 
             if (Vector2.Distance(transform.position, _curvePoints[_currentCurvePoint]) < 0.1f)
@@ -79,6 +82,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             partRigidbody2D.gravityScale = 0.05f;
         }
+
+        _gameManager.OnGuardJump();
 
         //_leftHandHingeJoint2D.limits = new JointAngleLimits2D
         //{
