@@ -33,7 +33,7 @@ public class MoveScript : MonoBehaviour
         if (isMoving)
         {
             var directionVector = (_targetPos - transform.position).normalized;
-            transform.Translate(directionVector * _moveSpeed);
+            transform.Translate(directionVector * _moveSpeed * Time.deltaTime);
         }
         _trueCurrentPos = transform.position;
 

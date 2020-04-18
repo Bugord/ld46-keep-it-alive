@@ -16,17 +16,23 @@ public class EnemyScript : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    void Start()
+
+    void Update()
     {
         _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPositions(new []{transform.position, _president.transform.position});
+        _lineRenderer.SetPositions(new[] { transform.position, _president.transform.GetChild(0).GetChild(0).position - Vector3.up /4f});
     }
 
     public void Shoot()
     {
         var bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
 
-        var directionVector = (_president.transform.position - transform.position).normalized;
+        var directionVector = (_president.transform.GetChild(0).GetChild(0).position - transform.position - Vector3.up/4f).normalized;
         bullet.GetComponent<BulletScript>().Launch(directionVector);
+    }
+
+    public void SetAiming(bool isActive)
+    {
+        _lineRenderer.enabled = isActive;
     }
 }

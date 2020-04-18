@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    public class ShootCommand : BaseCommand
+    class MoveToCommand : BaseCommand
     {
-        public int ShooterIndex;
-        public WeaponType WeaponType;
-    }
-
-    public enum WeaponType
-    {
-        Bullet
+        public bool IsPresident;
+        public int Index;
+        public Vector2 TargetPosition;
     }
 }

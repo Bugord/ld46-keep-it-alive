@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    public class WaitCommand : BaseCommand
+    public class BaseCommand
     {
-        public float TimeToWait;
+      
     }
 }
