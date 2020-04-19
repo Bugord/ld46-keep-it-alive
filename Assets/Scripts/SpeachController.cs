@@ -16,7 +16,7 @@ public class SpeachController : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        Speak("Ai bliaaaaaaaaaaaa");
+        //Speak("Ai bliaaaaaaaaaaaa");
     }
 
     public void Speak(string text) 
