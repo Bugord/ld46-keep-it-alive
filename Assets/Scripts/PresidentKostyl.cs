@@ -6,8 +6,10 @@ public class PresidentKostyl : MonoBehaviour
 {
    [SerializeField] private BoxCollider2D collider;
 
+   public bool isDead;
    public void EnableCollider()
    {
+      isDead = true;
       collider.enabled = true;
    }
 }

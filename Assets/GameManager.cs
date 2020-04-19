@@ -10,9 +10,8 @@ public class GameManager : MonoBehaviour
     public List<EnemyScript> Enemies;
     public GameObject President;
     public List<GameObject> Guards;
-    public GameObject Camera;
 
-    [SerializeField] private Scrollbar _scrollbar;
+    public HeliScript HeliScript;
 
     public float TimeScale;
 
@@ -52,7 +51,6 @@ public class GameManager : MonoBehaviour
 
     public void OnTimeScaleChange()
     {
-        TimeScale = _scrollbar.value;
     }
     
 }

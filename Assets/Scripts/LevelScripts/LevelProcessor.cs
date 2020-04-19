@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.LevelScripts.Commands;
+using LevelScripts.Commands;
 using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
@@ -14,6 +15,8 @@ namespace Assets.Scripts.LevelScripts
         private GameManager _gameManager;
         public LevelScript LevelScript;
 
+        private Coroutine cor;
+        
         void Awake()
         {
             _gameManager = GameManager.Instance;
@@ -21,7 +24,12 @@ namespace Assets.Scripts.LevelScripts
 
         public void Launch()
         {
-            StartCoroutine(LaunchCoroutine());
+            Debug.Log("Start new level script");
+            if (cor != null)
+            {
+                StopCoroutine(cor);
+            }
+            cor = StartCoroutine(LaunchCoroutine());
         }
 
         IEnumerator LaunchCoroutine()
@@ -43,7 +51,7 @@ namespace Assets.Scripts.LevelScripts
                         }
                         else
                         {
-                            _gameManager.Guards[moveToCommand.Index].transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition);
+                            _gameManager.Guards[moveToCommand.Index].transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition, moveToCommand.Speed);
                         }
                         break;
                     case MoveCameraCommand moveCameraCommand:
@@ -63,7 +71,12 @@ namespace Assets.Scripts.LevelScripts
                             _gameManager.Guards[moveByWaypointsCommand.Index].transform.GetChild(1).GetComponent<WayPointsScript>().MoveTo(moveByWaypointsCommand.Points);
                         }
                         break;
-                    
+                    case StartHeliScript startHeliScript:
+                        _gameManager.HeliScript.Launch();
+                        break;
+                    case SpawnPresident spawnPresident:
+                        _gameManager.President.SetActive(true);
+                        break;
 
                 }
 
