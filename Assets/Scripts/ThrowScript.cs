@@ -31,12 +31,23 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool IsDead;
     public bool WasShoted;
 
+    [SerializeField] private SpeachController _speachController;
+
+    private List<string> _messages;
 
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _partRigidbody2Ds = _ragdollTransform.GetComponentsInChildren<Rigidbody2D>().ToList();
         _gameManager = GameManager.Instance;
+
+        _messages = new List<string>
+        {
+            "Nooooooo!",
+            "Ai blyat!",
+            "Suka!",
+            "Not again!"
+        };
     }      
 
     private void Update()
@@ -167,5 +178,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             bodyRigidbody2D.AddForce(new Vector2(continueThrowDirection.x, .1f) * 100f, ForceMode2D.Impulse);
         }
+
+        if (Random.Range(0, 3) == 1)
+        {
+            _speachController.Speak(_messages[new System.Random().Next(0, _messages.Count)]);
+        }        
     }
 }

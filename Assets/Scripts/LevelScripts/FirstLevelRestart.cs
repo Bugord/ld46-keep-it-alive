@@ -41,6 +41,10 @@ namespace Assets.Scripts.LevelScripts
                 new SpawnPresident(),
                 new WaitCommand(1000),
 
+                new SpeakCommand(),
+
+                new WaitCommand(1500),
+
                 //shooter 1 start aiming
                 new ShootCommand(0, WeaponType.Bullet),
 

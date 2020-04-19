@@ -20,22 +20,11 @@ namespace Assets.Scripts.LevelScripts
                 //initial camera roll from center to start
                 new SpawnPresident(),
                 new MoveCameraCommand(true, new Vector2(0, 5.23f), 5f),
+                
                 new WaitCommand(2000),
                 
-                new MoveToCommand
-                {
-                    Index = 0,
-                    TargetPosition = new Vector2(-1.8f, 6.27f),
-                    Speed = 1.5f
-                },
-                new MoveToCommand
-                {
-                    Index = 1,
-                    TargetPosition = new Vector2(1.8f, 6.27f),
-                    Speed = 1.5f
-                },
-                new WaitCommand(2000),
-  
+                new SpeakCommand(),
+
                 // new StartHeliScript(),
                 
                 new WaitCommand(2000),

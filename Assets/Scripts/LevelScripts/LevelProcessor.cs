@@ -77,6 +77,14 @@ namespace Assets.Scripts.LevelScripts
                     case SpawnPresident spawnPresident:
                         _gameManager.President.SetActive(true);
                         break;
+                    case SpeakCommand speakCommand:
+                        List<string> messages = new List<string>
+                        {
+                            "Pizza with pineaple is FINE!",
+                            "Dota is better then LoL!"
+                        };
+                        _gameManager.President.GetComponentInChildren<SpeachController>().Speak(messages[new System.Random().Next(0, messages.Count)]);
+                        break;
 
                 }
 
