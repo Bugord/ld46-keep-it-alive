@@ -44,6 +44,8 @@ public class NPCRandomizer : MonoBehaviour
         _whiteWomanHands = Resources.LoadAll<Sprite>("NPC/Women/White/Hands/").ToList();
         _whiteWomanHeads = Resources.LoadAll<Sprite>("NPC/Women/White/Head/").ToList();
 
+        _npcPositions = GetComponentsInChildren<Transform>().ToList();
+
         for (int i = 0; i < _npcPositions.Count; i++)
         {
             Sprite leg = _legs[Random.Range(0, _legs.Count)];
