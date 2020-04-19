@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 1561302676214576286}
   m_Layer: 8
   m_Name: LH1
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5377,7 +5377,7 @@ GameObject:
   - component: {fileID: 3944291604313978722}
   m_Layer: 8
   m_Name: RL1
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10329,7 +10329,7 @@ GameObject:
   - component: {fileID: 7596579897118571362}
   m_Layer: 8
   m_Name: RH2
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15281,7 +15281,7 @@ GameObject:
   - component: {fileID: 3813129119179636988}
   m_Layer: 8
   m_Name: LH2
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20267,7 +20267,7 @@ GameObject:
   - component: {fileID: 7468772188991602530}
   m_Layer: 8
   m_Name: LL2
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25219,7 +25219,7 @@ GameObject:
   - component: {fileID: 6743317177146902850}
   m_Layer: 8
   m_Name: LL1
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30172,7 +30172,7 @@ GameObject:
   - component: {fileID: 5776810391406146445}
   m_Layer: 8
   m_Name: BodyBottom
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35142,7 +35142,7 @@ GameObject:
   - component: {fileID: 120814713218465008}
   m_Layer: 8
   m_Name: BodyTop
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40119,7 +40119,7 @@ GameObject:
   - component: {fileID: 253364948279558576}
   m_Layer: 8
   m_Name: RL2
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45071,7 +45071,7 @@ GameObject:
   - component: {fileID: 4757325019990450906}
   m_Layer: 8
   m_Name: RH1
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
