@@ -37,5 +37,11 @@ public class DestructionScript : MonoBehaviour
     {
         joint.enabled = false;
         GetComponent<Rigidbody2D>().AddForce((transform.position - other.transform.position)*30, ForceMode2D.Impulse);
+        
+        joint.enabled = false;
+
+        transform.parent.parent.GetChild(1).GetComponent<MoveScript>().isMoving = false;
+        transform.parent.parent.GetComponent<PresidentKostyl>()?.EnableCollider();
+        GetComponent<ParticleSystem>()?.Emit(30);
     }
 }

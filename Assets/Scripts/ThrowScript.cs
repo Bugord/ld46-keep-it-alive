@@ -39,7 +39,6 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _partRigidbody2Ds = _ragdollTransform.GetComponentsInChildren<Rigidbody2D>().ToList();
-        _gameManager = GameManager.Instance;
 
         _messages = new List<string>
         {
@@ -48,7 +47,13 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             "Suka!",
             "Not again!"
         };
-    }      
+    }
+
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+    
+    }
 
     private void Update()
     {

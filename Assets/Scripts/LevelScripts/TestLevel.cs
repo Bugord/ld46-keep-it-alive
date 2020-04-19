@@ -1,18 +1,14 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.LevelScripts.Commands;
 using LevelScripts.Commands;
 using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    [CreateAssetMenu(fileName = "FirstLevelRestart", menuName = "FirstLevelRestart")]
-    public class FirstLevelRestartScript : LevelScript
+    [CreateAssetMenu(fileName = "TestLevel", menuName = "TestLevel")]
+    public class TestLevel : LevelScript
     {
-        public FirstLevelRestartScript()
+        public TestLevel()
         {
             Commands = new List<BaseCommand>
             {
@@ -20,7 +16,7 @@ namespace Assets.Scripts.LevelScripts
                 //initial camera roll from center to start
                 new MoveCameraCommand(true, new Vector2(0, 5.23f), 5f),
                 new WaitCommand(2000),
-                
+
                 new MoveToCommand
                 {
                     Index = 0,
@@ -34,9 +30,9 @@ namespace Assets.Scripts.LevelScripts
                     Speed = 1.5f
                 },
                 new WaitCommand(2000),
-  
+
                 new StartHeliScript(),
-                
+
                 new WaitCommand(1500),
                 new SpawnPresident(),
                 new WaitCommand(1000),
@@ -49,7 +45,7 @@ namespace Assets.Scripts.LevelScripts
                 new ShootCommand(0, WeaponType.Bullet),
 
                 new WaitCommand(1000),
-                
+
                 //2 guards start moving
                 new MoveByWaypointsCommand(
                     false,
@@ -61,14 +57,14 @@ namespace Assets.Scripts.LevelScripts
                     }),
                 new MoveByWaypointsCommand(
                     false,
-                    1 , 
+                    1,
                     new List<Vector2>
                     {
                         new Vector2(1f, 5.95f),
                         new Vector2(1f, -5.75f)
                     }),
                 new WaitCommand(1000),
-                
+
                 //president start run
                 new MoveToCommand
                 {
@@ -76,17 +72,17 @@ namespace Assets.Scripts.LevelScripts
                     TargetPosition = new Vector2(0.17f, -15f)
                 },
                 new WaitCommand(4000),
-                
+
                 //main camera roll
                 new MoveCameraCommand(true, new Vector2(0, -5.28f), .3f),
-                
+
                 //shooter 1 shoots 2 times
                 new ShootCommand(0, WeaponType.Bullet),
-                
+
                 //guard 3 arrives
                 new MoveByWaypointsCommand(
-                    false, 
-                    2, 
+                    false,
+                    2,
                     new List<Vector2>
                     {
                         new Vector2(-1.3f, 0.61f),
@@ -94,7 +90,7 @@ namespace Assets.Scripts.LevelScripts
                     }),
                 new WaitCommand(2000),
                 new SetAimingCommand(0, false),
-                
+
                 //shooter 2 start shoot 1 time
                 new WaitCommand(2500),
                 new SetAimingCommand(1, true),
@@ -102,11 +98,11 @@ namespace Assets.Scripts.LevelScripts
                 new ShootCommand(1, WeaponType.Bullet),
                 new WaitCommand(1000),
                 new SetAimingCommand(1, false),
-                
+
                 //guard 4 arrives
                 new MoveByWaypointsCommand(
-                    false, 
-                    2, 
+                    false,
+                    2,
                     new List<Vector2>
                     {
                         new Vector2(-0.89f, 1.19f),
@@ -114,7 +110,7 @@ namespace Assets.Scripts.LevelScripts
                     }),
                 new WaitCommand(2000),
                 new SetAimingCommand(0, false),
-                
+
                 // shooter 3 start shoot 1 time
                 new WaitCommand(1000),
                 new SetAimingCommand(2, true),
@@ -123,8 +119,8 @@ namespace Assets.Scripts.LevelScripts
                 new WaitCommand(500),
                 new SetAimingCommand(2, false),
 
-        
             };
+
         }
     }
 }

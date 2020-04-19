@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\backup\TIL-Gaming\LD46" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="EnemyScript.cs" t="Include" />
+        <e p="GameManager.cs" t="Include" />
+        <e p="HeliScript.cs" t="Include" />
+        <e p="LevelRestartManager.cs" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="BulletScript.cs" t="Include" />
+          <e p="CameraScript.cs" t="Include" />
+          <e p="DeadColliderScript.cs" t="Include" />
+          <e p="DestructionScript.cs" t="Include" />
+          <e p="GrenadeScript.cs" t="Include" />
+          <e p="LevelScripts" t="Include">
+            <e p="Commands" t="Include">
+              <e p="BaseCommand.cs" t="Include" />
+              <e p="MoveByWaypointsCommand.cs" t="Include" />
+              <e p="MoveCameraCommand.cs" t="Include" />
+              <e p="SetAimingCommand.cs" t="Include" />
+              <e p="ShootCommand.cs" t="Include" />
+              <e p="SpawnPresident.cs" t="Include" />
+              <e p="SpeakCommand.cs" t="Include" />
+              <e p="StartHeliScript.cs" t="Include" />
+              <e p="StartMoveCommand.cs" t="Include" />
+              <e p="WaitCommand.cs" t="Include" />
+            </e>
+            <e p="FirstLevelRestart.cs" t="Include" />
+            <e p="FirstLevelScript.cs" t="Include" />
+            <e p="LevelProcessor.cs" t="Include" />
+            <e p="LevelScript.cs" t="Include" />
+            <e p="TestLevel.cs" t="Include" />
+          </e>
+          <e p="MoveScript.cs" t="Include" />
+          <e p="NPCRandomizer.cs" t="Include" />
+          <e p="NPCTemplate.cs" t="Include" />
+          <e p="PresidentKostyl.cs" t="Include" />
+          <e p="SpeachController.cs" t="Include" />
+          <e p="ThrowScript.cs" t="Include" />
+          <e p="WayPointsScript.cs" t="Include" />
+        </e>
+      </e>
+      <e p="LD46.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\mined\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mined\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_LD46.1699295732.00" t="ExcludeRecursive" />
+  </component>
+</project>

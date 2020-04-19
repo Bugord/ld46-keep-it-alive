@@ -83,7 +83,7 @@ namespace Assets.Scripts.LevelScripts
                 new WaitCommand(2500),
                 new SetAimingCommand(1, true),
                 new WaitCommand(1000),
-                new ShootCommand(1, WeaponType.Bullet),
+                new ShootCommand(1, WeaponType.Grenade),
                 new WaitCommand(1000),
                 new SetAimingCommand(1, false),
                 

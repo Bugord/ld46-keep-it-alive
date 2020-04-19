@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.LevelScripts;
+using Assets.Scripts.LevelScripts.Commands;
+using LevelScripts.Commands;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,12 +31,9 @@ public class LevelRestartManager : MonoBehaviour
     public GameObject GuardPrefab;
     public GameObject PresidentPrefab;
 
-    public FirstLevelScript FirstLevelScript;
-    public FirstLevelRestartScript FirstLevelRestartScript;
-
     private List<GameObject> lastRestartGuards = new List<GameObject>();
     
-    private void Awake()
+    private void Start()
     {
         _gameManager = GameManager.Instance;
     }
@@ -46,8 +45,9 @@ public class LevelRestartManager : MonoBehaviour
             _isFirstLoad = false;
             
             _gameManager.Guards.Clear();
+            
+            _gameManager.LevelProcessor.LoadFirst();
 
-            _gameManager.LevelProcessor.LevelScript = FirstLevelScript;
             
             foreach (var spawnPosition in SpawnPositions)
             {
@@ -77,7 +77,7 @@ public class LevelRestartManager : MonoBehaviour
             {
                 enemy.Reset();
             }
-            
+
             lastRestartGuards = new List<GameObject>();
             foreach (var guard in _gameManager.Guards)
             {
@@ -94,7 +94,7 @@ public class LevelRestartManager : MonoBehaviour
                 }
                     
                 Destroy(_gameManager.President);
-                
+
                 lastRestartGuards.Add(guard);
                 Destroy(guard.transform.GetChild(1).gameObject);
                 var ragdoll = guard.transform.GetChild(0);
@@ -115,8 +115,8 @@ public class LevelRestartManager : MonoBehaviour
             
             _gameManager.Guards.Clear();
 
-            _gameManager.LevelProcessor.LevelScript = FirstLevelRestartScript;
-            
+            _gameManager.LevelProcessor.LoadSecond();
+  
             foreach (var spawnPosition in RestartSpawnPositions)
             {
                 switch (spawnPosition.PrefabType)
@@ -131,7 +131,7 @@ public class LevelRestartManager : MonoBehaviour
                         break;
                 }
             }
-            
+
             _gameManager.Shoot();
         }
     }
