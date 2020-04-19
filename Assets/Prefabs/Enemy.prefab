@@ -201,6 +201,9 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  _timeToPrepare: 2
-  _timeToLastPrepare: 2
+  _timeToPrepare: 1
+  _timeToLastPrepare: 1
+  _mask:
+    serializedVersion: 2
+    m_Bits: 0
   BulletSpeed: 1
