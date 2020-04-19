@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,16 +9,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    [CreateAssetMenu(fileName = "FirstLevel", menuName = "Level")]
-    public class FirstLevelScript : LevelScript
+    [CreateAssetMenu(fileName = "FirstLevelR", menuName = "Level2")]
+    public class FirstLevelRestartScript : LevelScript
     {
-        public FirstLevelScript()
+        public FirstLevelRestartScript()
         {
             Commands = new List<BaseCommand>
             {
 
                 //initial camera roll from center to start
-                new SpawnPresident(),
                 new MoveCameraCommand(true, new Vector2(0, 5.23f), 5f),
                 new WaitCommand(2000),
                 
@@ -36,9 +35,11 @@ namespace Assets.Scripts.LevelScripts
                 },
                 new WaitCommand(2000),
   
-                // new StartHeliScript(),
+                new StartHeliScript(),
                 
-                new WaitCommand(2000),
+                new WaitCommand(1500),
+                new SpawnPresident(),
+                new WaitCommand(1000),
 
                 //shooter 1 start aiming
                 new ShootCommand(0, WeaponType.Bullet),

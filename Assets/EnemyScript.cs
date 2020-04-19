@@ -6,7 +6,6 @@ public class EnemyScript : MonoBehaviour
 {
     private LineRenderer _lineRenderer;
 
-    [SerializeField] private GameObject _president;
     [SerializeField] private GameObject _bulletPrefab;
 
     [SerializeField] private Gradient _prepareGradient;
@@ -19,14 +18,25 @@ public class EnemyScript : MonoBehaviour
     private bool _isLastPrepare;
 
     [SerializeField] private LayerMask _mask;
-    
+        
     private float _timer;
+
+    private GameManager _gameManager;
     
     public float BulletSpeed;
 
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _gameManager = GameManager.Instance;
+    }
+
+    public void Reset()
+    {
+        _isPrepare = false;
+        _isLastPrepare = false;
+        _timer = 0;
+        _lineRenderer.enabled = false;
     }
    
     void Update()
@@ -62,18 +72,18 @@ public class EnemyScript : MonoBehaviour
         }
         
         _lineRenderer.positionCount = 2;
-        _lineRenderer.SetPositions(new[] { transform.position, _president.transform.GetChild(0).GetChild(0).position});
+        _lineRenderer.SetPositions(new[] { transform.position, _gameManager.President.transform.GetChild(0).GetChild(0).position});
     }
 
     public void Shoot()
     {
-        var hit = Physics2D.Raycast(transform.position, _president.transform.GetChild(0).GetChild(0).position, 100);
+        var hit = Physics2D.Raycast(transform.position, _gameManager.President.transform.GetChild(0).GetChild(0).position, 100);
         
         // Debug.DrawLine(transform.position, hit.point, Color.yellow, 3);
         
         var bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
         
-        var directionVector = (_president.transform.GetChild(0).GetChild(0).position - transform.position - Vector3.up/4f).normalized;
+        var directionVector = (_gameManager.President.transform.GetChild(0).GetChild(0).position - transform.position - Vector3.up/4f).normalized;
         bullet.GetComponent<BulletScript>().Launch(directionVector);
     }
 

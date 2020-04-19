@@ -12,5 +12,6 @@ namespace Assets.Scripts.LevelScripts
         public bool IsPresident;
         public int Index;
         public Vector2 TargetPosition;
+        public float Speed = 0.3f;
     }
 }
