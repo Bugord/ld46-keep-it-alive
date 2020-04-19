@@ -78,6 +78,24 @@ public class LevelRestartManager : MonoBehaviour
                 enemy.Reset();
             }
 
+            //president logic
+            
+            Destroy(_gameManager.President.transform.GetChild(1).gameObject);
+            var ragdollp = _gameManager.President.transform.GetChild(0);
+            foreach (var componentsInChild in ragdollp.GetComponentsInChildren<Rigidbody2D>())
+            {
+                componentsInChild.bodyType = RigidbodyType2D.Static;
+            }
+            foreach (var componentsInChild in ragdollp.GetComponentsInChildren<Collider2D>())
+            {
+                componentsInChild.enabled = false;
+            }
+            foreach (var componentsInChild in ragdollp.GetComponentsInChildren<DestructionScript>())
+            {
+                componentsInChild.enabled = false;
+            }
+            
+            
             lastRestartGuards = new List<GameObject>();
             foreach (var guard in _gameManager.Guards)
             {
@@ -87,13 +105,6 @@ public class LevelRestartManager : MonoBehaviour
                     Destroy(guard, 5);
                     continue;
                 }
-
-                if (!_gameManager.President.GetComponent<PresidentKostyl>().isDead)
-                {
-                    _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(new Vector3(20 * (Random.Range(1, 2) == 1 ? -1 : 1), guard.transform.position.y), 3f);
-                }
-                    
-                Destroy(_gameManager.President);
 
                 lastRestartGuards.Add(guard);
                 Destroy(guard.transform.GetChild(1).gameObject);

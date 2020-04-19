@@ -9,7 +9,7 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private GameManager _gameManager;
     public Vector2 _direction;
-
+    public LayerMask Mask;
 
     private void Awake()
     {
@@ -26,11 +26,21 @@ public class BulletScript : MonoBehaviour
         var angle = Vector2.Angle(Vector2.up, direction);
         _rigidbody2D.SetRotation(angle);
         _direction = direction;
+        _rigidbody2D.velocity = _direction * Speed;
     }
 
     void Update()
     {
-        _rigidbody2D.velocity = _direction * Speed * _gameManager.TimeScale;
+        // var hit = Physics2D.Raycast(transform.position, _direction, 4, Mask);
+        // Debug.DrawRay(transform.position,  _direction.normalized * 4f, Color.red);
+        // if (hit.collider != null)
+        // {
+        //     if (hit.collider.tag == "Guard")
+        //     {
+        //         transform.position = hit.point;
+        //         _rigidbody2D.velocity = Vector2.zero;
+        //     }
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D coll)

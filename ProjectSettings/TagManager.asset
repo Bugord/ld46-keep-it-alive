@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Grenade
+  - Guard
   layers:
   - Default
   - TransparentFX

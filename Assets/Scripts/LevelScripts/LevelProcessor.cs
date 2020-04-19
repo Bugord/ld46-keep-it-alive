@@ -55,24 +55,17 @@ namespace Assets.Scripts.LevelScripts
 
         IEnumerator LaunchCoroutine()
         {
-            
-            Debug.Log(LevelScript);
-            Debug.Log(_gameManager);
-            
             foreach (var command in LevelScript.Commands)
             {
                 switch (command)
                 {
                     case ShootCommand shootCommand:
-                        Debug.Log("shootCommand");
                         _gameManager.Enemies[shootCommand.ShooterIndex].NewAttack(shootCommand.WeaponType);
                         break;
                     case WaitCommand waitCommand:
-                        Debug.Log("waitCommand");
                         yield return new WaitForSeconds(waitCommand.TimeToWait / 1000f);
                         break;
                     case MoveToCommand moveToCommand:
-                        Debug.Log("moveToCommand");
                         if (moveToCommand.IsPresident)
                         {
                             _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition);
@@ -83,16 +76,13 @@ namespace Assets.Scripts.LevelScripts
                         }
                         break;
                     case MoveCameraCommand moveCameraCommand:
-                        Debug.Log("moveCameraCommand");
                         Camera.main.GetComponent<CameraScript>().Move(moveCameraCommand.TargetPosition,
                             moveCameraCommand.Move ? moveCameraCommand.Speed : 0f);
                         break;
                     case SetAimingCommand setAimingCommand:
-                        Debug.Log("setAimingCommand");
                         //_gameManager.Enemies[setAimingCommand.Index].SetAiming(setAimingCommand.IsActive);
                         break;
                     case MoveByWaypointsCommand moveByWaypointsCommand:
-                        Debug.Log("moveByWaypointsCommand");
                         if (moveByWaypointsCommand.IsPresident)
                         {
                             _gameManager.President.transform.GetChild(1).GetComponent<WayPointsScript>().MoveTo(moveByWaypointsCommand.Points);
@@ -103,15 +93,12 @@ namespace Assets.Scripts.LevelScripts
                         }
                         break;
                     case StartHeliScript startHeliScript:
-                        Debug.Log("startHeliScript");
                         _gameManager.HeliScript.Launch();
                         break;
                     case SpawnPresident spawnPresident:
-                        Debug.Log("spawnPresident");
                         _gameManager.President.SetActive(true);
                         break;
                     case SpeakCommand speakCommand:
-                        Debug.Log("speakCommand");
                         List<string> messages = new List<string>
                         {
                             "Pizza with pineaple is FINE!",

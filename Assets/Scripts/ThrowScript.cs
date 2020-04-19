@@ -167,16 +167,23 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    private void Die()
+    IEnumerator DeadCasul()
     {
-        IsDead = true;
-        _deadCollider.enabled = true;
-
+        yield return new WaitForSeconds(1);
+        
         foreach (var partRigidbody2D in _partRigidbody2Ds)
         {
             partRigidbody2D.gravityScale = 1f;
             partRigidbody2D.gameObject.layer = 9;
         }
+    }
+    
+    private void Die()
+    {
+        IsDead = true;
+        _deadCollider.enabled = true;
+
+        StartCoroutine(DeadCasul());
 
         _bodyHingeJoint2D.enabled = false;
 
