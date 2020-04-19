@@ -95,6 +95,10 @@ namespace Assets.Scripts.LevelScripts
                     case StartHeliScript startHeliScript:
                         _gameManager.HeliScript.Launch();
                         break;
+                    case StartCarScript startCarScript:
+                        Debug.Log("startCarScript");
+                        _gameManager.CarScript.Launch();
+                        break;
                     case SpawnPresident spawnPresident:
                         _gameManager.President.SetActive(true);
                         break;

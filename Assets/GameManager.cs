@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Guards;
 
     public HeliScript HeliScript;
+    public CarScript CarScript;
 
     public float TimeScale;
 
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Level2")
+            Shoot();
     }
 
     public void Shoot()
