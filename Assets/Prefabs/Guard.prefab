@@ -370,10 +370,10 @@ MonoBehaviour:
   _rightHandRigidbody2D: {fileID: 6590755714596641200}
   _bodyHingeJoint2D: {fileID: 1569549642}
   _deadCollider: {fileID: 1226997600}
-  _flySpeed: 0.03
+  _flySpeed: 5
   _flyMaxDistance: 10
   IsDead: 0
-  WasShoted: 0
+  WasShoted: 1
 --- !u!114 &1784225397
 MonoBehaviour:
   m_ObjectHideFlags: 0
