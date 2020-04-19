@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,12 @@ public class BulletScript : MonoBehaviour
 
     private void Awake()
     {
-        _gameManager = GameManager.Instance;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
     }
 
     public void Launch(Vector2 direction)

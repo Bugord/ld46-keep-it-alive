@@ -20,6 +20,7 @@ namespace Assets.Scripts.LevelScripts
 
     public enum WeaponType
     {
-        Bullet
+        Bullet,
+        Grenade
     }
 }

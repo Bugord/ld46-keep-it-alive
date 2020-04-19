@@ -15,36 +15,64 @@ namespace Assets.Scripts.LevelScripts
         private GameManager _gameManager;
         public LevelScript LevelScript;
 
+        public FirstLevelScript FirstLevelScript;
+        public TestLevel FirstLevelRestartScript;
+
         private Coroutine cor;
         
-        void Awake()
+        void Start()
         {
             _gameManager = GameManager.Instance;
         }
 
+        public void LoadFirst()
+        {
+            LevelScript = FirstLevelScript;
+        } 
+        
+        public void LoadSecond()
+        {
+            LevelScript = FirstLevelRestartScript;
+        }
+
         public void Launch()
         {
-            Debug.Log("Start new level script");
             if (cor != null)
             {
                 StopCoroutine(cor);
             }
-            cor = StartCoroutine(LaunchCoroutine());
+
+            try
+            {
+                cor = StartCoroutine(LaunchCoroutine());
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+                throw;
+            } 
         }
 
         IEnumerator LaunchCoroutine()
         {
+            
+            Debug.Log(LevelScript);
+            Debug.Log(_gameManager);
+            
             foreach (var command in LevelScript.Commands)
             {
                 switch (command)
                 {
                     case ShootCommand shootCommand:
-                        _gameManager.Enemies[shootCommand.ShooterIndex].NewAttack();
+                        Debug.Log("shootCommand");
+                        _gameManager.Enemies[shootCommand.ShooterIndex].NewAttack(shootCommand.WeaponType);
                         break;
                     case WaitCommand waitCommand:
+                        Debug.Log("waitCommand");
                         yield return new WaitForSeconds(waitCommand.TimeToWait / 1000f);
                         break;
                     case MoveToCommand moveToCommand:
+                        Debug.Log("moveToCommand");
                         if (moveToCommand.IsPresident)
                         {
                             _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition);
@@ -55,13 +83,16 @@ namespace Assets.Scripts.LevelScripts
                         }
                         break;
                     case MoveCameraCommand moveCameraCommand:
+                        Debug.Log("moveCameraCommand");
                         Camera.main.GetComponent<CameraScript>().Move(moveCameraCommand.TargetPosition,
                             moveCameraCommand.Move ? moveCameraCommand.Speed : 0f);
                         break;
                     case SetAimingCommand setAimingCommand:
+                        Debug.Log("setAimingCommand");
                         //_gameManager.Enemies[setAimingCommand.Index].SetAiming(setAimingCommand.IsActive);
                         break;
                     case MoveByWaypointsCommand moveByWaypointsCommand:
+                        Debug.Log("moveByWaypointsCommand");
                         if (moveByWaypointsCommand.IsPresident)
                         {
                             _gameManager.President.transform.GetChild(1).GetComponent<WayPointsScript>().MoveTo(moveByWaypointsCommand.Points);
@@ -72,12 +103,15 @@ namespace Assets.Scripts.LevelScripts
                         }
                         break;
                     case StartHeliScript startHeliScript:
+                        Debug.Log("startHeliScript");
                         _gameManager.HeliScript.Launch();
                         break;
                     case SpawnPresident spawnPresident:
+                        Debug.Log("spawnPresident");
                         _gameManager.President.SetActive(true);
                         break;
                     case SpeakCommand speakCommand:
+                        Debug.Log("speakCommand");
                         List<string> messages = new List<string>
                         {
                             "Pizza with pineaple is FINE!",
@@ -89,6 +123,8 @@ namespace Assets.Scripts.LevelScripts
                 }
 
             }
+           
+            
         }
         
     }

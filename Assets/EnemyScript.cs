@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.LevelScripts;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -22,13 +23,20 @@ public class EnemyScript : MonoBehaviour
     private float _timer;
 
     private GameManager _gameManager;
+
+    public GameObject GrenadePrefab;
     
     public float BulletSpeed;
 
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    void Start()
+    {
         _gameManager = GameManager.Instance;
+
     }
 
     public void Reset()
@@ -93,9 +101,17 @@ public class EnemyScript : MonoBehaviour
         _isPrepare = true;
     }
 
-    public void NewAttack()
+    public void NewAttack(WeaponType weaponType)
     {
-        _isPrepare = true;
-        _lineRenderer.enabled = true;
+        if (weaponType == WeaponType.Bullet)
+        {
+            _isPrepare = true;
+            _lineRenderer.enabled = true;
+        }
+        else
+        {
+            var grenade = Instantiate(GrenadePrefab, transform.position, Quaternion.identity);
+            grenade.GetComponentInChildren<GrenadeScript>().ThrowGrenade(transform.position, (Vector2)_gameManager.President.transform.GetChild(0).GetChild(0).position - Vector2.up * 2f);
+        }
     }
 }

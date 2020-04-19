@@ -2578,7 +2578,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275bd6de48dd72242a2c8f81e6f16c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelScript: {fileID: 11400000, guid: 1cf3756e118d1964689d55532e61da9f, type: 2}
+  LevelScript: {fileID: 0}
+  FirstLevelScript: {fileID: 11400000, guid: 1cf3756e118d1964689d55532e61da9f, type: 2}
+  FirstLevelRestartScript: {fileID: 11400000, guid: 3b2cd9e130c7beb409b0afe805e2a568,
+    type: 2}
 --- !u!4 &854560162
 Transform:
   m_ObjectHideFlags: 0
@@ -2816,9 +2819,6 @@ MonoBehaviour:
     type: 3}
   PresidentPrefab: {fileID: 7065187989001620155, guid: 438af9bb381e18749a8d205c7cabcfc4,
     type: 3}
-  FirstLevelScript: {fileID: 11400000, guid: 1cf3756e118d1964689d55532e61da9f, type: 2}
-  FirstLevelRestartScript: {fileID: 11400000, guid: 68c162e3c24fcc540964075843ad47cd,
-    type: 2}
 --- !u!4 &880949637
 Transform:
   m_ObjectHideFlags: 0
@@ -4824,10 +4824,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1784225396, guid: e3486477c295a0f40bedf141a7788e87, type: 3}
-      propertyPath: WasShoted
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 525560169265495703, guid: e3486477c295a0f40bedf141a7788e87,
         type: 3}
       propertyPath: _waypoints.Array.size
@@ -4842,6 +4838,10 @@ PrefabInstance:
         type: 3}
       propertyPath: _waypoints.Array.data[1]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784225396, guid: e3486477c295a0f40bedf141a7788e87, type: 3}
+      propertyPath: WasShoted
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1784225397, guid: e3486477c295a0f40bedf141a7788e87, type: 3}
       propertyPath: _moveSpeed
@@ -6808,6 +6808,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3512304266684243249, guid: 0f993a41f9138c84ebd9fb29070035ae,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 3512304266684243250, guid: 0f993a41f9138c84ebd9fb29070035ae,
         type: 3}
       propertyPath: _president
@@ -6922,11 +6927,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _mask.m_Bits
       value: 257
-      objectReference: {fileID: 0}
-    - target: {fileID: 3512304266684243249, guid: 0f993a41f9138c84ebd9fb29070035ae,
-        type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f993a41f9138c84ebd9fb29070035ae, type: 3}

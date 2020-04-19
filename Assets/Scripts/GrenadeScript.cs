@@ -17,13 +17,13 @@ public class GrenadeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        distance = Vector2.Distance(startPoint.position, endPoint.position);
-        ThrowGrenade();
+        // ThrowGrenade();
     }
 
-    public void ThrowGrenade() 
+    public void ThrowGrenade(Vector2 from, Vector2 to) 
     {
-        StartCoroutine(Throw(GetCurvePoints(startPoint.position, endPoint.position, 15)));
+        distance = Vector2.Distance(from, to);
+        StartCoroutine(Throw(GetCurvePoints(from, to, 15)));
     }
 
     private IEnumerator Throw(List<Vector2> pointsList) 

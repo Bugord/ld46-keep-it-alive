@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d2fe057a07c27458c7113fdba7d6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _president: {fileID: 0}
   _bulletPrefab: {fileID: 6638620509501534719, guid: 784051771e4c29c45bdc43cffe135a55,
     type: 3}
   _prepareGradient:
@@ -206,4 +205,6 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 0
+  GrenadePrefab: {fileID: 515912039637306243, guid: 6454a293a0912f24aa22d34d1a9540bb,
+    type: 3}
   BulletSpeed: 1

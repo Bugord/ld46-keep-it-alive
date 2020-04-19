@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
 
     public int GuardsJumped;
 
-    public static GameManager Instance => GameObject.Find("GameManager").GetComponent<GameManager>();
+    public static GameManager Instance;
 
     public LevelProcessor LevelProcessor;
 
     void Awake()
     {
-        
+        Instance = this;
     }
 
     public void Shoot()
