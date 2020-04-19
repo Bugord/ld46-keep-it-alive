@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class PresidentKostyl : MonoBehaviour
 {
-   [SerializeField] private BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D collider;
+    [SerializeField] private LevelRestartManager _levelRestartManager;
 
-   public bool isDead;
-   public void EnableCollider()
-   {
-      isDead = true;
-      collider.enabled = true;
-   }
+    private void Start()
+    {
+        _levelRestartManager = FindObjectOfType<LevelRestartManager>();
+    }
+
+    public bool isDead;
+    public void EnableCollider()
+    {
+        isDead = true;
+        collider.enabled = true;
+
+        StartCoroutine(RestartGame());
+    }
+
+    private IEnumerator RestartGame() 
+    {
+        yield return new WaitForSeconds(3);
+
+        _levelRestartManager.ResetLevel();
+    }
 }
