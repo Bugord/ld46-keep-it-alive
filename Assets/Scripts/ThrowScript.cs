@@ -77,7 +77,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 
                     Die();
-
+                    if (Random.Range(0, 3) == 1)
+                    {
+                        _speachController.Speak(_messages[new System.Random().Next(0, _messages.Count)]);
+                    }
                 }
             }
         }
@@ -158,6 +161,10 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         bodyRigidbody2D.AddForce(dir * 5f, ForceMode2D.Impulse);
 
         Die();
+        if (Random.Range(0, 2) == 1)
+        {
+            _speachController.Speak("Ai, maslinu poimal!");
+        }
     }
 
     private void Die()
@@ -182,11 +189,6 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 _curvePoints[_curvePoints.Count - 1] - _curvePoints[_curvePoints.Count - 2];
 
             bodyRigidbody2D.AddForce(new Vector2(continueThrowDirection.x, .1f) * 100f, ForceMode2D.Impulse);
-        }
-
-        if (Random.Range(0, 3) == 1)
-        {
-            _speachController.Speak(_messages[new System.Random().Next(0, _messages.Count)]);
-        }        
+        }          
     }
 }
