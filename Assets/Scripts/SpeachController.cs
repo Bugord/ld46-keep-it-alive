@@ -19,13 +19,13 @@ public class SpeachController : MonoBehaviour
         //Speak("Ai bliaaaaaaaaaaaa");
     }
 
-    public void Speak(string text) 
+    public void Speak(string text, bool soundOn = true) 
     {
         _textContainer.text = "";
-        StartCoroutine(SaySpeach(text.ToCharArray()));
+        StartCoroutine(SaySpeach(text.ToCharArray(), soundOn));
     }
 
-    private IEnumerator SaySpeach(char[] text) 
+    private IEnumerator SaySpeach(char[] text, bool soundOn) 
     {
         _canvas.SetActive(true);
         yield return new WaitForSeconds(0.5f);
@@ -38,7 +38,8 @@ public class SpeachController : MonoBehaviour
             }
             if (char.IsLetter(ch))
             {
-                _audioSource.Play();
+                if(soundOn)
+                    _audioSource.Play();
                 
                 yield return new WaitForSeconds(0.05f);
             }

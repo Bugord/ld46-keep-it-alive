@@ -66,7 +66,7 @@ public class NPCRandomizer : MonoBehaviour
                 body = _manTopBodies[Random.Range(0, _manTopBodies.Count)];                
                 hand = skinColor == 0 ? _whiteManHands[Random.Range(0, _whiteManHands.Count)] : _blackManHands[Random.Range(0, _blackManHands.Count)];
                 head = skinColor == 0 ? _whiteManHeads[Random.Range(0, _whiteManHeads.Count)] : _blackManHeads[Random.Range(0, _blackManHeads.Count)];
-                Instantiate(ManTemplate, _npcPositions[i]).SetSprites(head, body, ass, hand, leg);
+                Instantiate(ManTemplate, _npcPositions[i]).SetSprites("npcIdle", head, body, ass, hand, leg);
             }
             else 
             {
@@ -75,7 +75,7 @@ public class NPCRandomizer : MonoBehaviour
                 
                 hand = skinColor == 0 ? _whiteWomanHands[Random.Range(0, _whiteWomanHands.Count-1)] : _blackWomanHands[Random.Range(0, _blackWomanHands.Count-1)];
                 head = skinColor == 0 ? _whiteWomanHeads[Random.Range(0, _whiteWomanHeads.Count)] : _blackWomanHeads[Random.Range(0, _blackWomanHeads.Count)];
-                Instantiate(WomenTemplate, _npcPositions[i]).SetSprites(head, body, ass, hand, leg);
+                Instantiate(WomenTemplate, _npcPositions[i]).SetSprites("womanNpcIdle", head, body, ass, hand, leg);
             }                        
         }
     }    
