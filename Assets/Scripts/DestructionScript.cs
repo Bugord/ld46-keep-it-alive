@@ -22,6 +22,8 @@ public class DestructionScript : MonoBehaviour
 
             var dir = collision.GetComponent<BulletScript>()._direction;
             transform.parent?.parent?.GetChild(1)?.GetComponent<ThrowScript>()?.Shoted(dir);
+            transform.parent.parent.GetChild(1).GetComponent<MoveScript>().isMoving = false;
+            transform.parent.parent.GetComponent<PresidentKostyl>()?.EnableCollider();
         }
     }
 }
