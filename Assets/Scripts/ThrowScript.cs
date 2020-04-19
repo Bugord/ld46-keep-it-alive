@@ -10,6 +10,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool _isThrowPrepare;
     private bool _wasThrown;
 
+    [SerializeField] private bool _isThrowable; 
+    
     private List<Vector2> _curvePoints;
     private int _currentCurvePoint;
 
@@ -21,7 +23,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Rigidbody2D _leftHandRigidbody2D;
     [SerializeField] private Rigidbody2D _rightHandRigidbody2D;
     [SerializeField] private HingeJoint2D _bodyHingeJoint2D;
-
+    [SerializeField] private BoxCollider2D _deadCollider;
 
     [SerializeField] private float _flySpeed;
     [SerializeField] private float _flyMaxDistance;
@@ -68,12 +70,16 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(!_isThrowable)
+            return;
         _isThrowPrepare = true;
         _lineRenderer.enabled = _isThrowPrepare;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if(!_isThrowable)
+            return;
         _isThrowPrepare = false;
         _lineRenderer.enabled = _isThrowPrepare;
 
@@ -134,11 +140,14 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         var bodyRigidbody2D = _bodyHingeJoint2D.GetComponent<Rigidbody2D>();
 
         bodyRigidbody2D.AddForce(dir * 5f, ForceMode2D.Impulse);
+
+        Die();
     }
 
     private void Die()
     {
         IsDead = true;
+        _deadCollider.enabled = true;
 
         foreach (var partRigidbody2D in _partRigidbody2Ds)
         {

@@ -31,7 +31,7 @@ namespace Assets.Scripts.LevelScripts
                 switch (command)
                 {
                     case ShootCommand shootCommand:
-                        _gameManager.Enemies[shootCommand.ShooterIndex].Shoot();
+                        _gameManager.Enemies[shootCommand.ShooterIndex].NewAttack();
                         break;
                     case WaitCommand waitCommand:
                         yield return new WaitForSeconds(waitCommand.TimeToWait / 1000f);
@@ -51,7 +51,7 @@ namespace Assets.Scripts.LevelScripts
                             moveCameraCommand.Move ? moveCameraCommand.Speed : 0f);
                         break;
                     case SetAimingCommand setAimingCommand:
-                        _gameManager.Enemies[setAimingCommand.Index].SetAiming(setAimingCommand.IsActive);
+                        //_gameManager.Enemies[setAimingCommand.Index].SetAiming(setAimingCommand.IsActive);
                         break;
                     case MoveByWaypointsCommand moveByWaypointsCommand:
                         if (moveByWaypointsCommand.IsPresident)
