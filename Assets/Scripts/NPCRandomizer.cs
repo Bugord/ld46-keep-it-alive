@@ -8,8 +8,7 @@ public class NPCRandomizer : MonoBehaviour
     [SerializeField] NPCTemplate ManTemplate;
     [SerializeField] NPCTemplate WomenTemplate;
 
-    [SerializeField] int NPCCount;
-
+    [SerializeField] private List<Transform> _npcPositions; 
 
     [SerializeField] List<Sprite> _legs;
     [SerializeField] List<Sprite> _manAsses;
@@ -45,7 +44,7 @@ public class NPCRandomizer : MonoBehaviour
         _whiteWomanHands = Resources.LoadAll<Sprite>("NPC/Women/White/Hands/").ToList();
         _whiteWomanHeads = Resources.LoadAll<Sprite>("NPC/Women/White/Head/").ToList();
 
-        for (int i = 0; i < NPCCount; i++)
+        for (int i = 0; i < _npcPositions.Count; i++)
         {
             Sprite leg = _legs[Random.Range(0, _legs.Count)];
 
@@ -65,16 +64,16 @@ public class NPCRandomizer : MonoBehaviour
                 body = _manTopBodies[Random.Range(0, _manTopBodies.Count)];                
                 hand = skinColor == 0 ? _whiteManHands[Random.Range(0, _whiteManHands.Count)] : _blackManHands[Random.Range(0, _blackManHands.Count)];
                 head = skinColor == 0 ? _whiteManHeads[Random.Range(0, _whiteManHeads.Count)] : _blackManHeads[Random.Range(0, _blackManHeads.Count)];
-                Instantiate(ManTemplate).SetSprites(head, body, ass, hand, leg);
+                Instantiate(ManTemplate, _npcPositions[i]).SetSprites(head, body, ass, hand, leg);
             }
             else 
             {
                 ass = _womanAsses.First(a => a.name.Contains(assId));
-                body = _womanTopBodies[Random.Range(0, _womanTopBodies.Count)];
+                body = _womanTopBodies[Random.Range(0, _womanTopBodies.Count-1)];
                 
-                hand = skinColor == 0 ? _whiteWomanHands[Random.Range(0, _whiteWomanHands.Count)] : _blackWomanHands[Random.Range(0, _blackWomanHands.Count)];
+                hand = skinColor == 0 ? _whiteWomanHands[Random.Range(0, _whiteWomanHands.Count-1)] : _blackWomanHands[Random.Range(0, _blackWomanHands.Count-1)];
                 head = skinColor == 0 ? _whiteWomanHeads[Random.Range(0, _whiteWomanHeads.Count)] : _blackWomanHeads[Random.Range(0, _blackWomanHeads.Count)];
-                Instantiate(WomenTemplate).SetSprites(head, body, ass, hand, leg);
+                Instantiate(WomenTemplate, _npcPositions[i]).SetSprites(head, body, ass, hand, leg);
             }                        
         }
     }    

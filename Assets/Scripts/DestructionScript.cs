@@ -25,5 +25,16 @@ public class DestructionScript : MonoBehaviour
             transform.parent.parent.GetChild(1).GetComponent<MoveScript>().isMoving = false;
             transform.parent.parent.GetComponent<PresidentKostyl>()?.EnableCollider();
         }
+        if (collision.gameObject.CompareTag("Grenade"))
+        {            
+            joint.enabled = false;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        joint.enabled = false;
+        GetComponent<Rigidbody2D>().AddForce((transform.position - other.transform.position)*30, ForceMode2D.Impulse);
     }
 }
