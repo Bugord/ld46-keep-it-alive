@@ -55,10 +55,6 @@ namespace Assets.Scripts.LevelScripts
 
         IEnumerator LaunchCoroutine()
         {
-            
-            Debug.Log(LevelScript);
-            Debug.Log(_gameManager);
-            
             foreach (var command in LevelScript.Commands)
             {
                 switch (command)

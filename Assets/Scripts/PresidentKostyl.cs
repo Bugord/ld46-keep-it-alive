@@ -7,6 +7,8 @@ public class PresidentKostyl : MonoBehaviour
     [SerializeField] private BoxCollider2D collider;
     [SerializeField] private LevelRestartManager _levelRestartManager;
 
+    private bool wasRestarted;
+
     private void Start()
     {
         _levelRestartManager = FindObjectOfType<LevelRestartManager>();
@@ -18,7 +20,13 @@ public class PresidentKostyl : MonoBehaviour
         isDead = true;
         collider.enabled = true;
 
-        StartCoroutine(RestartGame());
+        transform.GetChild(0).GetChild(0).GetComponent<HingeJoint2D>().enabled = false;
+
+        if (!wasRestarted)
+        {
+            wasRestarted = true;
+            StartCoroutine(RestartGame());
+        }
     }
 
     private IEnumerator RestartGame() 

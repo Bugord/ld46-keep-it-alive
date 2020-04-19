@@ -44,6 +44,10 @@ public class GrenadeScript : MonoBehaviour
         yield return new WaitForSeconds(_lifeTime);
 
         particle.Play();
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(3);
+
+        Destroy(transform.parent.gameObject);
     }
 
     public List<Vector2> GetCurvePoints(Vector2 start, Vector2 end, int anglesCount)

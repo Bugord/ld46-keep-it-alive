@@ -67,47 +67,107 @@ namespace Assets.Scripts.LevelScripts
                 //shooter 1 shoots 2 times
                 new ShootCommand(0, WeaponType.Bullet),
                 
-                //guard 3 arrives
-                new MoveByWaypointsCommand(
-                    false, 
-                    2, 
-                    new List<Vector2>
-                    {
-                        new Vector2(-1.3f, 0.61f),
-                        new Vector2(-1f, -5.75f)
-                    }),
+               new MoveByWaypointsCommand(
+                   false, 
+                   2, 
+                   new List<Vector2>
+                   {
+                       new Vector2(-0.89f, 0.19f),
+                       new Vector2(1f, -5.75f)
+                   }),
                 new WaitCommand(2000),
-                new SetAimingCommand(0, false),
                 
                 //shooter 2 start shoot 1 time
                 new WaitCommand(2500),
-                new SetAimingCommand(1, true),
                 new WaitCommand(1000),
                 new ShootCommand(1, WeaponType.Grenade),
                 new WaitCommand(1000),
-                new SetAimingCommand(1, false),
                 
                 //guard 4 arrives
+    
+                new WaitCommand(2000),
                 new MoveByWaypointsCommand(
                     false, 
-                    2, 
+                    3, 
                     new List<Vector2>
                     {
-                        new Vector2(-0.89f, 1.19f),
+                        new Vector2(0.89f, -1.19f),
                         new Vector2(1f, -5.75f)
                     }),
-                new WaitCommand(2000),
-                new SetAimingCommand(0, false),
-                
                 // shooter 3 start shoot 1 time
-                new WaitCommand(1000),
-                new SetAimingCommand(2, true),
+                new WaitCommand(2000),
+                // 2 from left
+                new MoveByWaypointsCommand(
+                    false, 
+                    4, 
+                    new List<Vector2>
+                    {
+                        new Vector2(-0.89f, 0f),
+                        new Vector2(1f, -5.75f)
+                    }),
+                new MoveByWaypointsCommand(
+                    false, 
+                    5, 
+                    new List<Vector2>
+                    {
+                        new Vector2(-0.89f, -1f),
+                        new Vector2(0.9f, -5.75f)
+                    }),
                 new WaitCommand(500),
-                new ShootCommand(2, WeaponType.Bullet),
-                new WaitCommand(500),
-                new SetAimingCommand(2, false),
+                
 
-        
+
+                
+                new ShootCommand(2, WeaponType.Bullet),
+                
+                
+                new WaitCommand(500),
+                new WaitCommand(2000),
+                new ShootCommand(4, WeaponType.Bullet),
+                new ShootCommand(5, WeaponType.Bullet),
+                
+                new MoveByWaypointsCommand(
+                    false, 
+                    6, 
+                    new List<Vector2>
+                    {
+                        new Vector2(0.89f, -3f),
+                        new Vector2(.9f, -5.75f)
+                    }),
+                new WaitCommand(3000),
+                new MoveByWaypointsCommand(
+                    false, 
+                    7, 
+                    new List<Vector2>
+                    {
+                        new Vector2(0.89f, -5f),
+                        new Vector2(1.1f, -5.75f)
+                    }),
+                new MoveByWaypointsCommand(
+                    false, 
+                    8, 
+                    new List<Vector2>
+                    {
+                        new Vector2(0.89f, -5f),
+                        new Vector2(1.1f, -5.65f)
+                    }),
+                new WaitCommand(3000),
+                new MoveByWaypointsCommand(
+                    false, 
+                    9, 
+                    new List<Vector2>
+                    {
+                        new Vector2(-0.89f, -5f),
+                        new Vector2(1.2f, -5.75f)
+                    }),
+                new MoveByWaypointsCommand(
+                    false, 
+                    10, 
+                    new List<Vector2>
+                    {
+                        new Vector2(0.89f, -5f),
+                        new Vector2(1.2f, -5.75f)
+                    }),
             };
         }
     }

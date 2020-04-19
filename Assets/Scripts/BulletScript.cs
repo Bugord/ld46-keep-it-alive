@@ -31,16 +31,16 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
-        var hit = Physics2D.Raycast(transform.position, _direction, 4, Mask);
-        Debug.DrawRay(transform.position,  _direction.normalized * 4f, Color.red);
-        if (hit.collider != null)
-        {
-            if (hit.collider.tag == "Guard")
-            {
-                transform.position = hit.point;
-                _rigidbody2D.velocity = Vector2.zero;
-            }
-        }
+        // var hit = Physics2D.Raycast(transform.position, _direction, 4, Mask);
+        // Debug.DrawRay(transform.position,  _direction.normalized * 4f, Color.red);
+        // if (hit.collider != null)
+        // {
+        //     if (hit.collider.tag == "Guard")
+        //     {
+        //         transform.position = hit.point;
+        //         _rigidbody2D.velocity = Vector2.zero;
+        //     }
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
