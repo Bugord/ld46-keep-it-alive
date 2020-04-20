@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public LevelProcessor LevelProcessor;
 
+    public GameObject endCanvas;
+
     void Awake()
     {
         Instance = this;

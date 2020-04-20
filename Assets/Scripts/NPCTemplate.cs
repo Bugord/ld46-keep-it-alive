@@ -35,7 +35,7 @@ public class NPCTemplate : MonoBehaviour
         if (isTerrorist)
         {
             _isMan = true;
-            _handsUpTime = 3;
+            _handsUpTime = 4;
         }
         else 
         {
@@ -55,6 +55,8 @@ public class NPCTemplate : MonoBehaviour
         };
     }
 
+    bool terroristReplic;
+
     private void Update()
     {
         if (isDead) return;
@@ -62,14 +64,22 @@ public class NPCTemplate : MonoBehaviour
         if (_time > _handsUpTime) 
         {
             _time = 0;
-            _handsUpTime = isTerrorist ? 3 : Random.Range(5, 15);
+            _handsUpTime = isTerrorist ? 4 : Random.Range(5, 15);
 
             if (_isMan)
             {
                 _animator.Play("manHandsUp");
                 if (isTerrorist) 
                 {
-                    _speachController.Speak("Allāhu ʾakbar!");
+                    if (terroristReplic)
+                    {
+                        _speachController.Speak("Look at my granades!");
+                    }
+                    else 
+                    {
+                        _speachController.Speak("My granades are amazing!");
+                    }
+                    terroristReplic = !terroristReplic;
                 }
             }
             else 

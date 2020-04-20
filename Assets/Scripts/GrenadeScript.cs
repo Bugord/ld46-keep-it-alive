@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GrenadeScript : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class GrenadeScript : MonoBehaviour
         GetComponent<AudioSource>().Play();
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(3);
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            GameManager.Instance.endCanvas.SetActive(true);
+        }
 
         Destroy(transform.parent.gameObject);
     }

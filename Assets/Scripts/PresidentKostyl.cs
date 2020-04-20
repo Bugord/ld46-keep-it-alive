@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PresidentKostyl : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class PresidentKostyl : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
 
-        _levelRestartManager.ResetLevel();
+        if (SceneManager.GetActiveScene().name != "Level2")
+        {
+            _levelRestartManager.ResetLevel();
+        }
     }
 }

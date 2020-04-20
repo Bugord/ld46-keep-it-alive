@@ -5,6 +5,7 @@ using Assets.Scripts.LevelScripts;
 using Assets.Scripts.LevelScripts.Commands;
 using LevelScripts.Commands;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum PrefabType
@@ -43,6 +44,11 @@ public class LevelRestartManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            SceneManager.LoadScene("Level1Restart");
+            return;
+        }
         if (_isFirstLoad)
         {
             _isFirstLoad = false;
