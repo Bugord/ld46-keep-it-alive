@@ -26,6 +26,12 @@ public class GrenadeScript : MonoBehaviour
         StartCoroutine(Throw(GetCurvePoints(from, to, 15)));
     }
 
+    public void ThrowGrenade(Vector2 from, Vector2 to, int steps)
+    {
+        distance = Vector2.Distance(from, to);
+        StartCoroutine(Throw(GetCurvePoints(from, to, steps)));
+    }
+
     private IEnumerator Throw(List<Vector2> pointsList) 
     {
         Vector2 currentPos = transform.position;

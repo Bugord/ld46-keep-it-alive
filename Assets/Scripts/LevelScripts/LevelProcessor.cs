@@ -67,8 +67,18 @@ namespace Assets.Scripts.LevelScripts
                         break;
                     case MoveToCommand moveToCommand:
                         if (moveToCommand.IsPresident)
-                        {
-                            _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition);
+                        {                            
+                            if (moveToCommand.Speed < 1)
+                            {
+                                _gameManager.President.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(s => s.sortingOrder = 0);
+                                _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition);
+                            }
+                            else 
+                            {
+                                _gameManager.President.GetComponentInChildren<ThrowScript>().enabled = true;
+                                _gameManager.President.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(s => s.sortingOrder = -10);
+                                _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition, moveToCommand.Speed);
+                            }                            
                         }
                         else
                         {
@@ -99,14 +109,17 @@ namespace Assets.Scripts.LevelScripts
                         Debug.Log("startCarScript");
                         _gameManager.CarScript.Launch();
                         break;
-                    case SpawnPresident spawnPresident:
+                    case SpawnPresident spawnPresident:                        
                         _gameManager.President.SetActive(true);
                         break;
                     case SpeakCommand speakCommand:
                         List<string> messages = new List<string>
                         {
                             "Pizza with pineaple is FINE!",
-                            "Dota is better then LoL!"
+                            "Dota is better then LoL!",
+                            "Your waifu is trash!",
+                            "Point the laser at me!",
+                            "Sponsor of my speach is Raid Shadow Legends!"
                         };
                         _gameManager.President.GetComponentInChildren<SpeachController>().Speak(messages[new System.Random().Next(0, messages.Count)]);
                         break;

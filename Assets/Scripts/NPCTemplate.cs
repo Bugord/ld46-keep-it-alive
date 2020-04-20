@@ -27,9 +27,21 @@ public class NPCTemplate : MonoBehaviour
 
     private List<string> _messages;
 
+    public bool isTerrorist;
+    public bool isDead;
+
     private void Start()
     {
-        _handsUpTime = Random.Range(5, 15);
+        if (isTerrorist)
+        {
+            _isMan = true;
+            _handsUpTime = 3;
+        }
+        else 
+        {
+            _handsUpTime = Random.Range(5, 15);
+        }
+        
         _messages = new List<string> 
         { 
             "Boooo!",
@@ -45,14 +57,20 @@ public class NPCTemplate : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         if (_time > _handsUpTime) 
         {
             _time = 0;
-            _handsUpTime = Random.Range(5, 15);
+            _handsUpTime = isTerrorist ? 3 : Random.Range(5, 15);
 
             if (_isMan)
             {
                 _animator.Play("manHandsUp");
+                if (isTerrorist) 
+                {
+                    _speachController.Speak("Allāhu ʾakbar!");
+                }
             }
             else 
             {
