@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7276734345233881265
 Transform:
   m_ObjectHideFlags: 0
@@ -576,6 +576,7 @@ MonoBehaviour:
   _rightHandRigidbody2D: {fileID: 6590755714596641200}
   _bodyHingeJoint2D: {fileID: 1569549642}
   _deadCollider: {fileID: 1226997600}
+  shadow: {fileID: 2169406878839114984}
   _flySpeed: 5
   _flyMaxDistance: 10
   IsDead: 0

@@ -1,14 +1,18 @@
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Assets.Scripts.LevelScripts.Commands;
 using LevelScripts.Commands;
 using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    [CreateAssetMenu(fileName = "TestLevel", menuName = "TestLevel")]
-    public class TestLevel : LevelScript
+    [CreateAssetMenu(fileName = "FirstLevelCasulRestart", menuName = "LevelCasulRestart")]
+    class FirstLevelCasulRestart : LevelScript
     {
-        public TestLevel()
+        public FirstLevelCasulRestart()
         {
             Commands = new List<BaseCommand>
             {
@@ -48,7 +52,7 @@ namespace Assets.Scripts.LevelScripts
                     0,
                     new List<Vector2>
                     {
-                        new Vector2(-1f, 6.05f),
+                        new Vector2(-1f, 5.95f),
                         new Vector2(-1f, -5.75f)
                     }),
                 new MoveByWaypointsCommand(
@@ -56,7 +60,7 @@ namespace Assets.Scripts.LevelScripts
                     1 ,
                     new List<Vector2>
                     {
-                        new Vector2(1f, 6.05f),
+                        new Vector2(1f, 5.95f),
                         new Vector2(1f, -5.75f)
                     }),
 
@@ -78,7 +82,7 @@ namespace Assets.Scripts.LevelScripts
                 new MoveCameraCommand(true, new Vector2(0, -5.28f), .3f),
                 
                 //shooter 1 shoots 2 times
-                new ShootCommand(0, WeaponType.Bullet),
+                //new ShootCommand(0, WeaponType.Bullet),
 
                new MoveByWaypointsCommand(
                    false,
@@ -137,7 +141,7 @@ namespace Assets.Scripts.LevelScripts
                 new WaitCommand(500),
                 new WaitCommand(4000),
                 new ShootCommand(4, WeaponType.Bullet),
-                new ShootCommand(5, WeaponType.Bullet),
+                //new ShootCommand(5, WeaponType.Bullet),
 
                 new MoveByWaypointsCommand(
                     false,
@@ -189,7 +193,7 @@ namespace Assets.Scripts.LevelScripts
                 new ShootCommand(7, WeaponType.Bullet),
 
                 new WaitCommand(4000),
-                new ShootCommand(8, WeaponType.Bullet),
+                //new ShootCommand(8, WeaponType.Bullet),
                 new WaitCommand(5000),
                 new ShootCommand(9, WeaponType.Bullet),
                 new WaitCommand(7000),

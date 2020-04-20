@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.LevelScripts.Commands;
 using LevelScripts.Commands;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LevelScripts
 {
@@ -15,8 +16,8 @@ namespace Assets.Scripts.LevelScripts
         private GameManager _gameManager;
         public LevelScript LevelScript;
 
-        public FirstLevelScript FirstLevelScript;
-        public TestLevel FirstLevelRestartScript;
+        public LevelScript FirstLevelScript;
+        public LevelScript FirstLevelRestartScript;
 
         private Coroutine cor;
         
@@ -75,6 +76,7 @@ namespace Assets.Scripts.LevelScripts
                             }
                             else 
                             {
+                                if(_gameManager.President.GetComponentInChildren<ThrowScript>() != null)
                                 _gameManager.President.GetComponentInChildren<ThrowScript>().enabled = true;
                                 _gameManager.President.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(s => s.sortingOrder = -10);
                                 _gameManager.President.transform.GetChild(1).GetComponent<MoveScript>().MoveTo(moveToCommand.TargetPosition, moveToCommand.Speed);
@@ -123,6 +125,11 @@ namespace Assets.Scripts.LevelScripts
                         };
                         _gameManager.President.GetComponentInChildren<SpeachController>().Speak(messages[new System.Random().Next(0, messages.Count)]);
                         break;
+
+                    case LastLevelCommand lastLevelCommand:
+                        SceneManager.LoadScene("Level2");
+                        break;
+                        
 
                 }
 

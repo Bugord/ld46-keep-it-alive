@@ -37,7 +37,7 @@ namespace Assets.Scripts.LevelScripts
                     0,
                     new List<Vector2>
                     {
-                        new Vector2(-1f, 5.95f),
+                        new Vector2(-1f, 6.05f),
                         new Vector2(-1f, -5.75f)
                     }),
                 new MoveByWaypointsCommand(
@@ -45,7 +45,7 @@ namespace Assets.Scripts.LevelScripts
                     1 ,
                     new List<Vector2>
                     {
-                        new Vector2(1f, 5.95f),
+                        new Vector2(1f, 6.05f),
                         new Vector2(1f, -5.75f)
                     }),
 
@@ -181,7 +181,17 @@ namespace Assets.Scripts.LevelScripts
                 new ShootCommand(8, WeaponType.Bullet),
                 new WaitCommand(5000),
                 new ShootCommand(9, WeaponType.Bullet),
-
+                new WaitCommand(7000),
+                new StartCarScript(),
+                new WaitCommand(2000),
+                new MoveToCommand
+                {
+                    IsPresident = true,
+                    TargetPosition = new Vector2(1.768f, 33.287f),
+                    Speed = 15
+                },
+                new WaitCommand(3000),
+                new LastLevelCommand()
             };
         }
     }
