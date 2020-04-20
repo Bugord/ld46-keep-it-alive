@@ -1,46 +1,35 @@
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Assets.Scripts.LevelScripts.Commands;
 using LevelScripts.Commands;
 using UnityEngine;
 
 namespace Assets.Scripts.LevelScripts
 {
-    [CreateAssetMenu(fileName = "TestLevel", menuName = "TestLevel")]
-    public class TestLevel : LevelScript
+    [CreateAssetMenu(fileName = "FirstLevelCasul", menuName = "LevelCasul")]
+    class FirstLevelCasual : LevelScript
     {
-        public TestLevel()
+        public FirstLevelCasual()
         {
             Commands = new List<BaseCommand>
             {
 
                 //initial camera roll from center to start
-                new MoveCameraCommand(true, new Vector2(0, 5.23f), 5f),
-                new WaitCommand(2000),
-
-                new MoveToCommand
-                {
-                    Index = 0,
-                    TargetPosition = new Vector2(-1.8f, 6.27f),
-                    Speed = 1.5f
-                },
-                new MoveToCommand
-                {
-                    Index = 1,
-                    TargetPosition = new Vector2(1.8f, 6.27f),
-                    Speed = 1.5f
-                },
-                new WaitCommand(2000),
-
-                new StartHeliScript(),
-
-                new WaitCommand(2500),
                 new SpawnPresident(),
-                new WaitCommand(1000),
+                new MoveCameraCommand(true, new Vector2(0, 5.23f), 5f),
+
+                new WaitCommand(2000),
 
                 new SpeakCommand(),
 
-                new WaitCommand(1500),
+                // new StartHeliScript(),
+                
+                new WaitCommand(2000),
 
+                //shooter 1 start aiming
                 new ShootCommand(0, WeaponType.Bullet),
 
                 new MoveByWaypointsCommand(
@@ -48,7 +37,7 @@ namespace Assets.Scripts.LevelScripts
                     0,
                     new List<Vector2>
                     {
-                        new Vector2(-1f, 6.05f),
+                        new Vector2(-1f, 5.95f),
                         new Vector2(-1f, -5.75f)
                     }),
                 new MoveByWaypointsCommand(
@@ -56,7 +45,7 @@ namespace Assets.Scripts.LevelScripts
                     1 ,
                     new List<Vector2>
                     {
-                        new Vector2(1f, 6.05f),
+                        new Vector2(1f, 5.95f),
                         new Vector2(1f, -5.75f)
                     }),
 
@@ -78,7 +67,7 @@ namespace Assets.Scripts.LevelScripts
                 new MoveCameraCommand(true, new Vector2(0, -5.28f), .3f),
                 
                 //shooter 1 shoots 2 times
-                new ShootCommand(0, WeaponType.Bullet),
+                //new ShootCommand(0, WeaponType.Bullet),
 
                new MoveByWaypointsCommand(
                    false,
@@ -137,7 +126,7 @@ namespace Assets.Scripts.LevelScripts
                 new WaitCommand(500),
                 new WaitCommand(4000),
                 new ShootCommand(4, WeaponType.Bullet),
-                new ShootCommand(5, WeaponType.Bullet),
+                //new ShootCommand(5, WeaponType.Bullet),
 
                 new MoveByWaypointsCommand(
                     false,
@@ -189,7 +178,7 @@ namespace Assets.Scripts.LevelScripts
                 new ShootCommand(7, WeaponType.Bullet),
 
                 new WaitCommand(4000),
-                new ShootCommand(8, WeaponType.Bullet),
+                //new ShootCommand(8, WeaponType.Bullet),
                 new WaitCommand(5000),
                 new ShootCommand(9, WeaponType.Bullet),
                 new WaitCommand(7000),
@@ -201,11 +190,9 @@ namespace Assets.Scripts.LevelScripts
                     TargetPosition = new Vector2(1.768f, 33.287f),
                     Speed = 15
                 },
-                new WaitCommand(5000),
+                new WaitCommand(3000),
                 new LastLevelCommand()
-
             };
-
         }
     }
 }

@@ -3143,8 +3143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelScript: {fileID: 0}
-  FirstLevelScript: {fileID: 11400000, guid: 1cf3756e118d1964689d55532e61da9f, type: 2}
-  FirstLevelRestartScript: {fileID: 11400000, guid: 3b2cd9e130c7beb409b0afe805e2a568,
+  FirstLevelScript: {fileID: 11400000, guid: ea8845a41bdc1724fa025bb2ec6a369c, type: 2}
+  FirstLevelRestartScript: {fileID: 11400000, guid: 8a640cb6ad50ac74791bc341882e78b9,
     type: 2}
 --- !u!4 &854560162
 Transform:

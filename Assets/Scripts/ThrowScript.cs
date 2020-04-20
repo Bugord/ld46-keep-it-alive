@@ -25,6 +25,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private HingeJoint2D _bodyHingeJoint2D;
     [SerializeField] private BoxCollider2D _deadCollider;
 
+    public GameObject shadow;
+
     [SerializeField] private float _flySpeed;
     [SerializeField] private float _flyMaxDistance;
 
@@ -114,6 +116,8 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             partRigidbody2D.gravityScale = 0.05f;
         }
 
+        shadow.SetActive(false);
+
         _gameManager.OnGuardJump();
 
         GetComponent<MoveScript>().enabled = false;
@@ -186,6 +190,7 @@ public class ThrowScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         StartCoroutine(DeadCasul());
 
         _bodyHingeJoint2D.enabled = false;
+        shadow.SetActive(false);
 
         if (!WasShoted)
         {

@@ -7,6 +7,8 @@ public class PresidentKostyl : MonoBehaviour
     [SerializeField] private BoxCollider2D collider;
     [SerializeField] private LevelRestartManager _levelRestartManager;
 
+    public GameObject shadow;
+
     private bool wasRestarted;
 
     private void Start()
@@ -21,6 +23,8 @@ public class PresidentKostyl : MonoBehaviour
         collider.enabled = true;
 
         transform.GetChild(0).GetChild(0).GetComponent<HingeJoint2D>().enabled = false;
+
+        shadow.SetActive(false);
 
         if (!wasRestarted)
         {
