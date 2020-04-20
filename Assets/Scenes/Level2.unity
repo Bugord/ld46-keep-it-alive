@@ -665,6 +665,7 @@ MonoBehaviour:
   _rightHandRigidbody2D: {fileID: 157420894}
   _bodyHingeJoint2D: {fileID: 677256010}
   _deadCollider: {fileID: 256157938}
+  shadow: {fileID: 1136273800}
   _flySpeed: 5
   _flyMaxDistance: 10
   IsDead: 0
@@ -3491,6 +3492,7 @@ MonoBehaviour:
   _rightHandRigidbody2D: {fileID: 0}
   _bodyHingeJoint2D: {fileID: 0}
   _deadCollider: {fileID: 0}
+  shadow: {fileID: 0}
   _flySpeed: 0.03
   _flyMaxDistance: 0
   IsDead: 0
@@ -3856,6 +3858,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6590755714868545499, guid: e3486477c295a0f40bedf141a7788e87,
     type: 3}
   m_PrefabInstance: {fileID: 1100449615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136273800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1940272706040133649, guid: 438af9bb381e18749a8d205c7cabcfc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 551390579}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1139060013
 GameObject:
