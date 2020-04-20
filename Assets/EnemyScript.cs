@@ -93,6 +93,7 @@ public class EnemyScript : MonoBehaviour
         
         var directionVector = (_gameManager.President.transform.GetChild(0).GetChild(0).position - transform.position - Vector3.up/4f).normalized;
         bullet.GetComponent<BulletScript>().Launch(directionVector);
+        GetComponent<AudioSource>().Play();
     }
 
     public void SetAiming(bool isActive)

@@ -31,6 +31,9 @@ public class LevelRestartManager : MonoBehaviour
     public GameObject GuardPrefab;
     public GameObject PresidentPrefab;
 
+    public List<Transform> first;
+    public List<Transform> second;
+
     private List<GameObject> lastRestartGuards = new List<GameObject>();
     
     private void Start()
@@ -62,6 +65,12 @@ public class LevelRestartManager : MonoBehaviour
                         _gameManager.President = president;
                         break;
                 }
+            }
+
+            foreach (var pos in first)
+            {
+                var guard = Instantiate(GuardPrefab, pos.position, Quaternion.identity);
+                _gameManager.Guards.Add(guard);
             }
             
             _gameManager.Shoot();
@@ -141,6 +150,12 @@ public class LevelRestartManager : MonoBehaviour
                         _gameManager.President = president;
                         break;
                 }
+            }
+
+            foreach (var pos in second)
+            {
+                var guard = Instantiate(GuardPrefab, pos.position, Quaternion.identity);
+                _gameManager.Guards.Add(guard);
             }
 
             _gameManager.Shoot();

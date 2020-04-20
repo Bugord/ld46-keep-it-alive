@@ -44,6 +44,7 @@ public class GrenadeScript : MonoBehaviour
         yield return new WaitForSeconds(_lifeTime);
 
         particle.Play();
+        GetComponent<AudioSource>().Play();
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(3);
 

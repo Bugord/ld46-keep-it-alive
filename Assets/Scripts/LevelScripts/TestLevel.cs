@@ -41,47 +41,6 @@ namespace Assets.Scripts.LevelScripts
 
                 new WaitCommand(1500),
 
-                //shooter 1 start aiming
-                new ShootCommand(0, WeaponType.Bullet),
-
-                new WaitCommand(1000),
-
-                //2 guards start moving
-                new MoveByWaypointsCommand(
-                    false,
-                    0,
-                    new List<Vector2>
-                    {
-                        new Vector2(-1f, 5.95f),
-                        new Vector2(-1f, -5.75f)
-                    }),
-                new MoveByWaypointsCommand(
-                    false,
-                    1,
-                    new List<Vector2>
-                    {
-                        new Vector2(1f, 5.95f),
-                        new Vector2(1f, -5.75f)
-                    }),
-                new WaitCommand(1000),
-
-                //president start run
-                new MoveToCommand
-                {
-                    IsPresident = true,
-                    TargetPosition = new Vector2(0.17f, -15f)
-                },
-                new WaitCommand(4000),
-
-                //main camera roll
-                new MoveCameraCommand(true, new Vector2(0, -5.28f), .3f),
-
-                //shooter 1 shoots 2 times
-                new ShootCommand(0, WeaponType.Bullet),
-
-                 new WaitCommand(2000),
-
-                //shooter 1 start aiming
                 new ShootCommand(0, WeaponType.Bullet),
 
                 new WaitCommand(1000),
@@ -97,7 +56,7 @@ namespace Assets.Scripts.LevelScripts
                     }),
                 new MoveByWaypointsCommand(
                     false,
-                    1 , 
+                    1 ,
                     new List<Vector2>
                     {
                         new Vector2(1f, 5.95f),
@@ -115,13 +74,12 @@ namespace Assets.Scripts.LevelScripts
                 
                 //main camera roll
                 new MoveCameraCommand(true, new Vector2(0, -5.28f), .3f),
-                
-                //shooter 1 shoots 2 times
-                new ShootCommand(0, WeaponType.Bullet),
-                
+
+               new ShootCommand(0, WeaponType.Bullet),
+
                new MoveByWaypointsCommand(
-                   false, 
-                   2, 
+                   false,
+                   2,
                    new List<Vector2>
                    {
                        new Vector2(-0.89f, 0.19f),
@@ -136,90 +94,101 @@ namespace Assets.Scripts.LevelScripts
                 new WaitCommand(1000),
                 
                 //guard 4 arrives
-    
-                new WaitCommand(2000),
                 new MoveByWaypointsCommand(
-                    false, 
-                    3, 
+                    false,
+                    3,
                     new List<Vector2>
                     {
                         new Vector2(0.89f, -1.19f),
                         new Vector2(1f, -5.75f)
                     }),
-                // shooter 3 start shoot 1 time
                 new WaitCommand(2000),
-                // 2 from left
                 new MoveByWaypointsCommand(
-                    false, 
-                    4, 
+                    false,
+                    4,
                     new List<Vector2>
                     {
                         new Vector2(-0.89f, 0f),
                         new Vector2(1f, -5.75f)
                     }),
                 new MoveByWaypointsCommand(
-                    false, 
-                    5, 
+                    false,
+                    5,
                     new List<Vector2>
                     {
                         new Vector2(-0.89f, -1f),
                         new Vector2(0.9f, -5.75f)
                     }),
-                new WaitCommand(500),
-                
-
-
-                
-                new ShootCommand(2, WeaponType.Bullet),
-                
-                
-                new WaitCommand(500),
+                // shooter 3 start shoot 1 time
                 new WaitCommand(2000),
+                // 2 from left
+              
+                new WaitCommand(500),
+
+
+
+
+                new ShootCommand(2, WeaponType.Bullet),
+
+
+                new WaitCommand(500),
+                new WaitCommand(4000),
                 new ShootCommand(4, WeaponType.Bullet),
                 new ShootCommand(5, WeaponType.Bullet),
-                
+
                 new MoveByWaypointsCommand(
-                    false, 
-                    6, 
+                    false,
+                    6,
                     new List<Vector2>
                     {
                         new Vector2(0.89f, -3f),
                         new Vector2(.9f, -5.75f)
                     }),
-                new WaitCommand(3000),
                 new MoveByWaypointsCommand(
-                    false, 
-                    7, 
+                    false,
+                    7,
                     new List<Vector2>
                     {
                         new Vector2(0.89f, -5f),
                         new Vector2(1.1f, -5.75f)
                     }),
+                new WaitCommand(3000),
+
+                new ShootCommand(6, WeaponType.Grenade),
+
                 new MoveByWaypointsCommand(
-                    false, 
-                    8, 
+                    false,
+                    8,
                     new List<Vector2>
                     {
                         new Vector2(0.89f, -5f),
                         new Vector2(1.1f, -5.65f)
                     }),
-                new WaitCommand(3000),
+                new WaitCommand(1000),
                 new MoveByWaypointsCommand(
-                    false, 
-                    9, 
+                    false,
+                    9,
                     new List<Vector2>
                     {
                         new Vector2(-0.89f, -5f),
                         new Vector2(1.2f, -5.75f)
                     }),
                 new MoveByWaypointsCommand(
-                    false, 
-                    10, 
+                    false,
+                    10,
                     new List<Vector2>
                     {
-                        new Vector2(0.89f, -5f),
+                        new Vector2(-0.89f, -5f),
                         new Vector2(1.2f, -5.75f)
                     }),
+
+                new WaitCommand(3000),
+                new ShootCommand(7, WeaponType.Bullet),
+
+                new WaitCommand(4000),
+                new ShootCommand(8, WeaponType.Bullet),
+                new WaitCommand(5000),
+                new ShootCommand(9, WeaponType.Bullet),
             };
 
         }

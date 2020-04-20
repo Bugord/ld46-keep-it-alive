@@ -25,6 +25,7 @@ public class DestructionScript : MonoBehaviour
             transform.parent.parent.GetChild(1).GetComponent<MoveScript>().isMoving = false;
             transform.parent.parent.GetComponent<PresidentKostyl>()?.EnableCollider();
             GetComponent<ParticleSystem>()?.Emit(30);
+            transform.parent.GetComponent<AudioSource>().Play();
         }
         if (collision.gameObject.CompareTag("Grenade"))
         {            
